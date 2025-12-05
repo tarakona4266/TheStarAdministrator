@@ -8,18 +8,29 @@ public class CameraFocus : MonoBehaviour
     bool scrollingUp = false;
     bool scrollingDown = false;
 
-    CameraMovement CamMovement;
+    Vector3 mousePosition;
+    [SerializeField] Vector3 rayTarget;
 
-    //temporary
-    [SerializeField] PlanetFocus planet;
+    CameraMovement CamMovement;
+    Camera cam;
+
+    PlanetFocus targetPlanet;
 
     void Start()
     {
         CamMovement = GetComponent<CameraMovement>();
+        cam = Camera.main;
     }
 
     void Update()
     {
+        // --- raycast ---
+        Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Vector3 raydir = ray.direction * 105;
+        Debug.DrawRay(ray.origin, raydir, Color.green);
+
+        // --- scroll ---
         mouseScroll = Input.mouseScrollDelta.y;
         if (mouseScroll > 0)
         {
@@ -28,7 +39,7 @@ public class CameraFocus : MonoBehaviour
             if (CamMovement.CanMove)
             {
                 CamMovement.DisableMovement();
-                planet.DoFocus();
+                //targetPlanet.DoFocus();
             }
         }
         else if (mouseScroll < 0)
@@ -37,7 +48,7 @@ public class CameraFocus : MonoBehaviour
             scrollingUp = false;
             if (!CamMovement.CanMove)
             {
-                planet.UndoFocus();
+                //targetPlanet.UndoFocus();
                 CamMovement.EnableMovement();
             }
         }
@@ -46,5 +57,7 @@ public class CameraFocus : MonoBehaviour
             scrollingDown = false;
             scrollingUp = false;
         }
+        
     }
+
 }

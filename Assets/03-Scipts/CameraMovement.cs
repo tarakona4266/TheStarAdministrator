@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     Transform camTransform;
 
     Vector3 mousePosition;
+    Vector3 moveDir;
     float mouseX;
     float mouseY;
 
@@ -16,8 +17,8 @@ public class CameraMovement : MonoBehaviour
     float bottomBorder;
 
     [Header("Parameters")]
-    [SerializeField] private float ScreenEdgeSize = 100;
-    [SerializeField] private float movementSpeed = 5;
+    [SerializeField] private float screenEdgeSize = 20;
+    [SerializeField] private float movementSpeed = 15;
     [Header("Starting state")]
     [SerializeField] bool canMove;
     [HideInInspector] public bool CanMove
@@ -29,10 +30,13 @@ public class CameraMovement : MonoBehaviour
     {
         camTransform = GetComponent<Transform>();
 
-        rightBorder = Screen.width - ScreenEdgeSize;
-        leftBorder = ScreenEdgeSize;
-        topBorder = Screen.height - ScreenEdgeSize;
-        bottomBorder = ScreenEdgeSize;
+        screenEdgeSize = Screen.width * screenEdgeSize / 100;
+        Debug.Log($"margin : {screenEdgeSize}");
+
+        rightBorder = Screen.width - screenEdgeSize;
+        leftBorder = screenEdgeSize;
+        topBorder = Screen.height - screenEdgeSize;
+        bottomBorder = screenEdgeSize;
     }
 
     private void Update()
@@ -45,20 +49,26 @@ public class CameraMovement : MonoBehaviour
 
             if (mouseX > rightBorder)
             {
-                camTransform.Translate(Vector3.right * movementSpeed * Time.deltaTime, Space.World);
+                moveDir.x = 1;
             }
-            if (mouseX < leftBorder)
+            else if (mouseX < leftBorder)
             {
-                camTransform.Translate(Vector3.left * movementSpeed * Time.deltaTime, Space.World);
+                moveDir.x = -1;
             }
+            else { moveDir.x = 0; }
+
             if (mouseY > topBorder)
             {
-                camTransform.Translate(Vector3.forward * movementSpeed * Time.deltaTime, Space.World);
+                moveDir.z = 1;
             }
-            if (mouseY < bottomBorder)
+            else if (mouseY < bottomBorder)
             {
-                camTransform.Translate(Vector3.back * movementSpeed * Time.deltaTime, Space.World);
+                moveDir.z = -1;
             }
+            else { moveDir.z = 0; }
+
+            moveDir.Normalize();
+            camTransform.Translate(moveDir * movementSpeed * Time.deltaTime, Space.World);
         }
     }
 

@@ -2,17 +2,16 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.CinemachineCore;
 
 public class PlanetFocus : MonoBehaviour
 {
     CinemachineVirtualCamera focusCamera;
     [SerializeField] CinemachineBrain brain;
-    CinemachineCore core;
 
     void Start()
     {
         focusCamera = GetComponentInChildren<CinemachineVirtualCamera>(true);
-        Debug.Log($"focus cam : { focusCamera.gameObject.name}");
     }
 
     public void DoFocus()

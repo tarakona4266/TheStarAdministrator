@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 169140561}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,8 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c041bbf09a41fd84593da7b301e2551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScreenEdgeSize: 200
-  movementSpeed: 10
+  screenEdgeSize: 20
+  movementSpeed: 15
   canMove: 1
 --- !u!114 &1318544361
 MonoBehaviour:
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2402a216b356674c8d83c0b5d6c1341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 1433245124}
+  rayTarget: {x: 0, y: -200, z: 0}
 --- !u!1 &1415016599
 GameObject:
   m_ObjectHideFlags: 3
