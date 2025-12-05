@@ -35,9 +35,14 @@ public class CameraFocus : MonoBehaviour
             if (hit.collider != null)
             {
                 targetPlanet = hit.collider.GetComponentInParent<PlanetFocus>();
+                if (CamMovement.CanMove) { targetPlanet.DisplayInfos(true); } // avoid display in focus mode
             }
         }
-        else if (CamMovement.CanMove) { targetPlanet = null; }
+        else if (CamMovement.CanMove)
+        {
+            if (targetPlanet != null) { targetPlanet.DisplayInfos(false); }
+            targetPlanet = null;
+        }
 
         // --- scroll ---
         if (targetPlanet != null || !CamMovement.CanMove)
