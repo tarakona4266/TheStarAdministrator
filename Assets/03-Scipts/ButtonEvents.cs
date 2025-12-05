@@ -9,19 +9,8 @@ public class ButtonEvents : MonoBehaviour
     {
         SceneManager.LoadScene("TestScene");
     }
-
-    public void OnOptionsClick()
+    public void OnQuitClick()
     {
-        SceneManager.LoadScene("TestScene");
-    }
-
-    public void OnCreditsClick()
-    {
-        SceneManager.LoadScene("TestScene");
-    }
-
-    public void OnClick()
-    {
-        SceneManager.LoadScene("TestScene");
+        Application.Quit();
     }
 }
