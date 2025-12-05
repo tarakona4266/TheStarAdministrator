@@ -9,7 +9,7 @@ public class CameraFocus : MonoBehaviour
     bool scrollingDown = false;
 
     Vector3 mousePosition;
-    [SerializeField] Vector3 rayTarget;
+    Vector3 rayTarget;
 
     CameraMovement CamMovement;
     Camera cam;
@@ -30,32 +30,45 @@ public class CameraFocus : MonoBehaviour
         Vector3 raydir = ray.direction * 105;
         Debug.DrawRay(ray.origin, raydir, Color.green);
 
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null)
+            {
+                targetPlanet = hit.collider.GetComponentInParent<PlanetFocus>();
+            }
+        }
+        else if (CamMovement.CanMove) { targetPlanet = null; }
+
         // --- scroll ---
-        mouseScroll = Input.mouseScrollDelta.y;
-        if (mouseScroll > 0)
+        if (targetPlanet != null || !CamMovement.CanMove)
         {
-            scrollingUp = true;
-            scrollingDown = false;
-            if (CamMovement.CanMove)
+            mouseScroll = Input.mouseScrollDelta.y;
+            if (mouseScroll > 0)
             {
-                CamMovement.DisableMovement();
-                //targetPlanet.DoFocus();
+                scrollingUp = true;
+                scrollingDown = false;
+                if (CamMovement.CanMove)
+                {
+                    CamMovement.DisableMovement();
+                    targetPlanet.DoFocus();
+                }
             }
-        }
-        else if (mouseScroll < 0)
-        {
-            scrollingDown = true;
-            scrollingUp = false;
-            if (!CamMovement.CanMove)
+            else if (mouseScroll < 0)
             {
-                //targetPlanet.UndoFocus();
-                CamMovement.EnableMovement();
+                scrollingDown = true;
+                scrollingUp = false;
+                if (!CamMovement.CanMove)
+                {
+                    targetPlanet.UndoFocus();
+                    CamMovement.EnableMovement();
+                    targetPlanet = null;
+                }
             }
-        }
-        else
-        {
-            scrollingDown = false;
-            scrollingUp = false;
+            else
+            {
+                scrollingDown = false;
+                scrollingUp = false;
+            }
         }
         
     }
