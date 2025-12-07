@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.29255
+      value: -49.5
       objectReference: {fileID: 0}
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -195,7 +195,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FoodPlanet
       value: 
-      objectReference: {fileID: 919132147851035127}
+      objectReference: {fileID: 1433245122}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -471,6 +471,54 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.483231, y: 20.954739, z: 3.6409812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &409867980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409867982}
+  - component: {fileID: 409867981}
+  m_Layer: 0
+  m_Name: -----GLOBAL STATISTICS-----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &409867981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409867980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3308318abca26ec4e938dbea75260891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Food: 0
+  Wood: 0
+  Stone: 0
+  House: 0
+--- !u!4 &409867982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409867980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8958755, y: -3.9305248, z: 12.649834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -954,9 +1002,11 @@ GameObject:
   - component: {fileID: 1433245123}
   - component: {fileID: 1433245124}
   - component: {fileID: 1433245125}
+  - component: {fileID: 1433245126}
+  - component: {fileID: 1433245127}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1006,6 +1056,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 1635163875}
+--- !u!114 &1433245126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433245122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca34c99e6fe7f347823f25844e7c92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Workers: 0
+  TimeSecond: 0
+  Stats: {fileID: 409867980}
+--- !u!135 &1433245127
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433245122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1590693887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,7 +1580,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1504,6 +1590,7 @@ SphereCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 409867982}
   - {fileID: 832575519}
   - {fileID: 1110567105}
   - {fileID: 169140560}

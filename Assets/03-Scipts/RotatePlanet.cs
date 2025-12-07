@@ -22,6 +22,6 @@ public class RotatePlanet : MonoBehaviour
         direction.Normalize();
         rotation = Quaternion.LookRotation(direction * -1);
         transform.rotation = rotation;
-        Debug.Log(rotation);
+        //Debug.Log(rotation);
     }
 }

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   job: food
-  speed: 0.01
+  speed: 0.03
   FoodPlanet: {fileID: 0}
   WoodPlanet: {fileID: 0}
   MiningPlanet: {fileID: 0}
