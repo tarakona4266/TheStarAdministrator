@@ -9,7 +9,7 @@ public class SpriteRenderer : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 cameraPosition = Camera.transform.position;
-        cameraPosition.y = transform.position.y;
+        //cameraPosition.y = transform.position.y;
         transform.LookAt(cameraPosition);
         transform.Rotate(0f,180f,0f);
     }
