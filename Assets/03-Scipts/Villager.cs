@@ -14,7 +14,6 @@ public class Villager : MonoBehaviour
     public float speed;
     bool tired;
 
-    public SphereCollider Trigger;
     [SerializeField] GameObject FoodPlanet;
     [SerializeField] GameObject WoodPlanet;
     [SerializeField] GameObject MiningPlanet;
@@ -28,32 +27,32 @@ public class Villager : MonoBehaviour
 
     void Update()
     {
+        tag = job;
         if (age > deathAge)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         if (!tired)
         {
             switch (job) //Check the villager job and make them act accordingly by calling the correct function
             {
                 case "food":
-                    transform.position += new Vector3(FoodPlanet.transform.position.x, FoodPlanet.transform.position.y, FoodPlanet.transform.position.z);
+                    transform.position += new Vector3(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.y - transform.position.y, FoodPlanet.transform.position.z - transform.position.z).normalized * speed;
                     break;
                 case "wood":
-                    transform.position += new Vector3(WoodPlanet.transform.position.x, WoodPlanet.transform.position.y, WoodPlanet.transform.position.z);
+                    transform.position += new Vector3(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.y - transform.position.y, WoodPlanet.transform.position.z - transform.position.z).normalized * speed;
                     break;
                 case "minor":
-                    transform.position += new Vector3(MiningPlanet.transform.position.x, MiningPlanet.transform.position.y, MiningPlanet.transform.position.z);
+                    transform.position += new Vector3(MiningPlanet.transform.position.x - transform.position.x, MiningPlanet.transform.position.y - transform.position.y, MiningPlanet.transform.position.z - transform.position.z).normalized * speed;
                     break;
                 case "builder":
-                    transform.position += new Vector3(HousePlanet.transform.position.x, HousePlanet.transform.position.y, HousePlanet.transform.position.z);
+                    transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
                     break;
                 case "vagabond":
                     break;
                 default:
                     break;
-
             }
-        }
+        } 
     }
 }
