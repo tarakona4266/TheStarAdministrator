@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 79fe18fa905e5f745b4484a55908ea2a
+guid: 9cc5edc5d0025ea46868ef46881a0355
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: "Plan\xE8te 1.002"
+      name: "Plan\xE8te 1.005"
     second: {fileID: 2100000, guid: af78e764cd6da984d8dd67d7497e065a, type: 2}
   materials:
     materialImportMode: 2

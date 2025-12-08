@@ -4,9 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public class FaceSun : MonoBehaviour
+public class FaceTarget : MonoBehaviour
 {
-    [SerializeField] Transform sun;
+    [SerializeField] Transform lookTarget;
     Vector3 direction;
     Quaternion rotation;
 
@@ -16,9 +16,10 @@ public class FaceSun : MonoBehaviour
 
     void Update()
     {
-        if (sun != null)
+        if (lookTarget != null)
         {
-            direction = sun.position - transform.position;
+
+            direction = lookTarget.position - transform.position;
             Debug.DrawRay(transform.position, direction, Color.yellow);
             direction.Normalize();
             rotation = Quaternion.LookRotation(direction * -1);
