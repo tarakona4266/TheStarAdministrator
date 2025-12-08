@@ -38,34 +38,45 @@ public class PlanetInfos : MonoBehaviour
             homeInfos.transform.position = Camera.main.WorldToScreenPoint(homePosition.position) + offset;
         }
         if (displayFoodInfos) 
-        { 
+        {
+            foodInfos.transform.position = Camera.main.WorldToScreenPoint(foodPosition.position) + offset;
         }
-        if (displayCristalInfos) 
-        { 
+        if (displayCristalInfos)
+        {
+            cristalInfos.transform.position = Camera.main.WorldToScreenPoint(cristalPosition.position) + offset;
         }
-        if (displaysWoodInfos) { 
+        if (displaysWoodInfos)
+        {
+            woodInfos.transform.position = Camera.main.WorldToScreenPoint(woodPosition.position) + offset;
         }
     }
 
     public void DisplayInfos(string planetType = "Untagged")
     {
+        print(planetType);
         switch (planetType)
         {
-            case "food": // home
+            case "planet_house": // home
                 displayHomeInfos = true;
                 homeInfos.gameObject.SetActive(true);
                 break;
-            case "wood": // food
-
+            case "planet_food": // food
+                displayFoodInfos = true;
+                foodInfos.gameObject.SetActive(true);
                 break;
-            case "stone": // wood
-
+            case "planet_wood": // wood
+                displayCristalInfos = true;
+                woodInfos.gameObject.SetActive(true);
                 break;
-            case "house": // cristal
-                
+            case "planet_stone": // cristal
+                displaysWoodInfos = true;
+                cristalInfos.gameObject.SetActive(true);
                 break;
             default:
                 homeInfos.gameObject.SetActive(false);
+                woodInfos.gameObject.SetActive(false);
+                foodInfos.gameObject.SetActive(false);
+                cristalInfos.gameObject.SetActive(false);
                 break;
         }
     }
