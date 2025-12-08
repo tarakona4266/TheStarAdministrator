@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 3746099496273819697}
   - component: {fileID: 6764640942317915083}
   m_Layer: 0
-  m_Name: Villager 1
+  m_Name: Villager
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
