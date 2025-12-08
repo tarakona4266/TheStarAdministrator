@@ -53,6 +53,15 @@ public class Villager : MonoBehaviour
                 default:
                     break;
             }
-        } 
+        }
+        else
+        {
+            transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+        }
+    }
+
+    void OnNight()
+    {
+        tired = true;
     }
 }
