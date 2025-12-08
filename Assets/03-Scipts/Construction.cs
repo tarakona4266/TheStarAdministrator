@@ -8,11 +8,14 @@ public class Construction : MonoBehaviour
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
     [Header("Prefabs")]
+    [SerializeField] bool homePlanet = true;
     [SerializeField] GameObject house;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject deco;
 
     public bool constructionMode;
+    bool validPlanet;
+    bool validLocation;
 
     GameObject toBuild;
     Vector3 buildPosition;
@@ -36,14 +39,33 @@ public class Construction : MonoBehaviour
                 {
                     if (hit.collider != null)
                     {
-                        buildRotation = hit.normal;
-                        buildPosition = hit.point;
+                        string tag = hit.transform.root.tag;
+                        if (homePlanet && tag == "planet_house")
+                        {
+                            buildRotation = hit.normal;
+                            buildPosition = hit.point;
+                            validPlanet = true;
+
+                        }
+                        else if (!homePlanet && tag == "planet_food")
+                        {
+                            buildRotation = hit.normal;
+                            buildPosition = hit.point;
+                            validPlanet = true;
+                        }
+                        else
+                        {
+                            validPlanet = false;
+                        }
                     }
                 }
-
+                
                 // dislay building preview
-                toBuild.transform.position = buildPosition;
-                toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+                if (validPlanet)
+                {
+                    toBuild.transform.position = buildPosition;
+                    toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+                }
             }
         }
     }
