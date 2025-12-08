@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DayNightCycle : MonoBehaviour
 {
