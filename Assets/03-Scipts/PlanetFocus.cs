@@ -8,7 +8,6 @@ public class PlanetFocus : MonoBehaviour
 {
     CinemachineVirtualCamera focusCamera;
     [SerializeField] CinemachineBrain brain;
-    [SerializeField] Canvas planetInfo;
 
     void Start()
     {
@@ -17,28 +16,12 @@ public class PlanetFocus : MonoBehaviour
 
     public void DoFocus()
     {
-        DisplayInfos(false);
         focusCamera.gameObject.SetActive(true);
     }
 
     public void UndoFocus()
     {
-        DisplayInfos(true);
         focusCamera.gameObject.SetActive(false);
     }
 
-    public void DisplayInfos(bool state)
-    {
-        if (planetInfo != null)
-        {
-            if (state)
-            {
-                planetInfo.gameObject.SetActive(true);
-            }
-            if (!state)
-            {
-                planetInfo.gameObject.SetActive(false);
-            }
-        }
-    }
 }
