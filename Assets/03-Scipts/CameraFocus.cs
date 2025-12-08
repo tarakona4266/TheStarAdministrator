@@ -8,6 +8,8 @@ public class CameraFocus : MonoBehaviour
     bool scrollingUp = false;
     bool scrollingDown = false;
 
+    public Ray ray; // reuse ray in construction script
+
     Vector3 mousePosition;
     Vector3 rayTarget;
 
@@ -26,7 +28,7 @@ public class CameraFocus : MonoBehaviour
     void Update()
     {
         // --- raycast ---
-        Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
+        ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Vector3 raydir = ray.direction * 105;
         Debug.DrawRay(ray.origin, raydir, Color.green);
@@ -38,7 +40,7 @@ public class CameraFocus : MonoBehaviour
                 targetPlanet = hit.collider.GetComponentInParent<PlanetFocus>();
                 string tag = hit.transform.root.tag;
                 planetInfos.DisplayInfos(tag);
-                Debug.Log(tag);
+                //Debug.Log(tag);
             }
         }
         else if (CamMovement.CanMove)
