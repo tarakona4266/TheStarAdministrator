@@ -13,8 +13,14 @@ public class UIBehaviour : MonoBehaviour
     [SerializeField] DayNightCycle DayNightCycle;
 
     [SerializeField] Slider HappinessSlider;
+
     [SerializeField] Slider DaySlider;
     [SerializeField] Image DaySliderJauge;
+    [SerializeField] Image Icon;
+
+    [SerializeField] Sprite Sun;
+    [SerializeField] Sprite Moon;
+
     void Update()
     {
         UIText.text = ("Food : " + Stats.Food);
@@ -32,10 +38,12 @@ public class UIBehaviour : MonoBehaviour
         if (DayNightCycle.IsDayActive)
         {
             DaySliderJauge.color = Color.yellow;
+            Icon.sprite = Sun;
         }
         else
         {
             DaySliderJauge.color = Color.blue;
+            Icon.sprite = Moon;
         }
         DaySlider.value = 60 * DayNightCycle.TimeMinute + DayNightCycle.TimeSecond;
 

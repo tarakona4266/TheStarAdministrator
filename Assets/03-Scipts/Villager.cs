@@ -12,12 +12,14 @@ public class Villager : MonoBehaviour
     int deathAge;
     public string job;
     public float speed;
-    bool tired;
+    public bool tired;
 
-    [SerializeField] GameObject FoodPlanet;
-    [SerializeField] GameObject WoodPlanet;
-    [SerializeField] GameObject MiningPlanet;
-    [SerializeField] GameObject HousePlanet;
+    [SerializeField] public GameObject FoodPlanet;
+    [SerializeField] public GameObject WoodPlanet;
+    [SerializeField] public GameObject StonePlanet;
+    [SerializeField] public GameObject HousePlanet;
+
+    [SerializeField] Stats Stats;
 
     void Start()
     {
@@ -32,6 +34,14 @@ public class Villager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (Stats.GetComponent<DayNightCycle>().IsDayActive == false)
+        {
+            tired = true;
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
+
         if (!tired)
         {
             switch (job) //Check the villager job and make them act accordingly by calling the correct function
@@ -43,7 +53,7 @@ public class Villager : MonoBehaviour
                     transform.position += new Vector3(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.y - transform.position.y, WoodPlanet.transform.position.z - transform.position.z).normalized * speed;
                     break;
                 case "minor":
-                    transform.position += new Vector3(MiningPlanet.transform.position.x - transform.position.x, MiningPlanet.transform.position.y - transform.position.y, MiningPlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.position += new Vector3(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.y - transform.position.y, StonePlanet.transform.position.z - transform.position.z).normalized * speed;
                     break;
                 case "builder":
                     transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
@@ -57,11 +67,7 @@ public class Villager : MonoBehaviour
         else
         {
             transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
-        }
-    }
 
-    void OnNight()
-    {
-        tired = true;
+        } 
     }
 }

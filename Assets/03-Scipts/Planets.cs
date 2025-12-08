@@ -13,9 +13,10 @@ public class TestPlanet : MonoBehaviour
     void OnTriggerEnter (Collider other)
     {
         print(other.gameObject);
-        if (tag == "planet_"+other.gameObject.tag) 
-        { 
-            other.gameObject.SetActive(false); 
+        if (tag == "planet_"+other.gameObject.tag && Stats.GetComponent<DayNightCycle>().IsDayActive) 
+        {
+            other.transform.GetChild(0).gameObject.SetActive(false);
+            other.transform.GetChild(1).gameObject.SetActive(false);
             Workers++;
         }
     }
