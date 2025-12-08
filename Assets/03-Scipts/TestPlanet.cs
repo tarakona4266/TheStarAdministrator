@@ -13,7 +13,7 @@ public class TestPlanet : MonoBehaviour
     void OnTriggerEnter (Collider other)
     {
         print(other.gameObject);
-        if (other.gameObject.tag == tag) 
+        if (tag == "planet_"+other.gameObject.tag) 
         { 
             other.gameObject.SetActive(false); 
             Workers++;

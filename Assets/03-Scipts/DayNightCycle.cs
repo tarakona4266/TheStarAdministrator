@@ -9,10 +9,10 @@ public class DayNightCycle : MonoBehaviour
     Stopwatch stopWatch = new Stopwatch();
     TimeSpan ts;
 
-    [SerializeField] bool IsDayActive = true;
+    public bool IsDayActive = true;
 
-    [SerializeField] int TimeSecond;
-    [SerializeField] int TimeMinute;
+    public int TimeSecond;
+    public int TimeMinute;
 
     private void Start()
     {

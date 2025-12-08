@@ -11,6 +11,7 @@ public class Stats : MonoBehaviour
     public int House = 0;
 
     public int Villagers = 0;
+    public int Happiness = 0;
 
     private GameObject[] getCount;
 

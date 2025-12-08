@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Ground
   - food
+  - wood
+  - stone
+  - house
+  - planet_food
+  - planet_wood
+  - planet_stone
+  - planet_house
   layers:
   - Default
   - TransparentFX
