@@ -6,23 +6,38 @@ using UnityEngine.UI;
 
 public class UIBehaviour : MonoBehaviour
 {
-    [SerializeField] TMP_Text text;
+    [SerializeField] TMP_Text UIText;
+    [SerializeField] TMP_Text HappinessText;
     [SerializeField] Stats Stats;
+
+    [SerializeField] DayNightCycle DayNightCycle;
+
+    [SerializeField] Slider HappinessSlider;
+    [SerializeField] Slider DaySlider;
+    [SerializeField] Image DaySliderJauge;
     void Update()
     {
-        text.text = ("Food : " + Stats.Food);
-        text.text += ("\nWood : " + Stats.Wood);
-        text.text += ("\nStone : " + Stats.Stone);
+        UIText.text = ("Food : " + Stats.Food);
+        UIText.text += ("\nWood : " + Stats.Wood);
+        UIText.text += ("\nStone : " + Stats.Stone);
 
-        if (Stats.House < Stats.Villagers) { text.text += ("\n\n" + "<color=red>" + "Houses : " + Stats.House + "</color>"); }
-        else { text.text += ("\n\nHouses : " + Stats.House); }
+        if (Stats.House < Stats.Villagers) { UIText.text += ("\n\n" + "<color=red>" + "Houses : " + Stats.House + "</color>"); }
+        else { UIText.text += ("\n\nHouses : " + Stats.House); }
 
-        text.text += ("\nVillagers : " + Stats.Villagers);
-    }
+        UIText.text += ("\nVillagers : " + Stats.Villagers);
 
-    [SerializeField] Slider Slider;
-    void Sliderbehaviour(int value)
-    {
-        value = Stats.Happiness;
+        HappinessText.text = ("Happiness : " + Stats.Happiness);
+        HappinessSlider.value = Stats.Happiness;
+
+        if (DayNightCycle.IsDayActive)
+        {
+            DaySliderJauge.color = Color.yellow;
+        }
+        else
+        {
+            DaySliderJauge.color = Color.blue;
+        }
+        DaySlider.value = 60 * DayNightCycle.TimeMinute + DayNightCycle.TimeSecond;
+
     }
 }
