@@ -8,35 +8,37 @@ public class PlanetFocus : MonoBehaviour
 {
     CinemachineVirtualCamera focusCamera;
     [SerializeField] CinemachineBrain brain;
-    Canvas planetInfo;
+    [SerializeField] Canvas planetInfo;
 
     void Start()
     {
         focusCamera = GetComponentInChildren<CinemachineVirtualCamera>(true);
-        planetInfo = GetComponentInChildren<Canvas>(true);
     }
 
     public void DoFocus()
     {
-        planetInfo.gameObject.SetActive(false);
+        DisplayInfos(false);
         focusCamera.gameObject.SetActive(true);
     }
 
     public void UndoFocus()
     {
-        planetInfo.gameObject.SetActive(false);
+        DisplayInfos(true);
         focusCamera.gameObject.SetActive(false);
     }
 
     public void DisplayInfos(bool state)
     {
-        if (state)
+        if (planetInfo != null)
         {
-            planetInfo.gameObject.SetActive(true);
-        }
-        if (!state)
-        {
-            planetInfo.gameObject.SetActive(false);
+            if (state)
+            {
+                planetInfo.gameObject.SetActive(true);
+            }
+            if (!state)
+            {
+                planetInfo.gameObject.SetActive(false);
+            }
         }
     }
 }
