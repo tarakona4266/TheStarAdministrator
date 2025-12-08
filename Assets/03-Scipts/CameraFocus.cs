@@ -15,6 +15,7 @@ public class CameraFocus : MonoBehaviour
     Camera cam;
 
     PlanetFocus targetPlanet;
+    [SerializeField] PlanetInfos planetInfos;
 
     void Start()
     {
@@ -35,16 +36,22 @@ public class CameraFocus : MonoBehaviour
             if (hit.collider != null)
             {
                 targetPlanet = hit.collider.GetComponentInParent<PlanetFocus>();
-                if (CamMovement.CanMove) { targetPlanet.DisplayInfos(true); } // avoid display in focus mode
+                string tag = hit.transform.root.tag;
+                planetInfos.DisplayInfos(tag);
+                Debug.Log(tag);
             }
         }
         else if (CamMovement.CanMove)
         {
-            if (targetPlanet != null) { targetPlanet.DisplayInfos(false); }
             targetPlanet = null;
+            planetInfos.DisplayInfos();
+        }
+        else
+        {
+            planetInfos.DisplayInfos();
         }
 
-        // --- scroll ---
+        // --- focus mode ---
         if (targetPlanet != null || !CamMovement.CanMove)
         {
             mouseScroll = Input.mouseScrollDelta.y;
@@ -55,6 +62,7 @@ public class CameraFocus : MonoBehaviour
                 if (CamMovement.CanMove)
                 {
                     CamMovement.DisableMovement();
+                    planetInfos.gameObject.SetActive(false);
                     targetPlanet.DoFocus();
                 }
             }
@@ -65,6 +73,7 @@ public class CameraFocus : MonoBehaviour
                 if (!CamMovement.CanMove)
                 {
                     targetPlanet.UndoFocus();
+                    planetInfos.gameObject.SetActive(true);
                     CamMovement.EnableMovement();
                     targetPlanet = null;
                 }
