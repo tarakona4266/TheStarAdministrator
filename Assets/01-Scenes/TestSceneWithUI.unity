@@ -154,12 +154,12 @@ PrefabInstance:
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -174,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -546,7 +546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 115, y: -49}
+  m_AnchoredPosition: {x: 125, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322009779
@@ -733,6 +733,9 @@ MonoBehaviour:
   HappinessSlider: {fileID: 1127818492}
   DaySlider: {fileID: 2000361929}
   DaySliderJauge: {fileID: 2034233010}
+  Icon: {fileID: 865369540}
+  Sun: {fileID: 0}
+  Moon: {fileID: 0}
 --- !u!1 &441387073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2402a216b356674c8d83c0b5d6c1341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetInfos: {fileID: 0}
 --- !u!1 &1415016599
 GameObject:
   m_ObjectHideFlags: 3
@@ -1569,7 +1573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 169140561}
-  planetInfo: {fileID: 0}
 --- !u!114 &1433245125
 MonoBehaviour:
   m_ObjectHideFlags: 0
