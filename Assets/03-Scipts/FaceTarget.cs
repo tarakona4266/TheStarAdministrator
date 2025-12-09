@@ -10,10 +10,6 @@ public class FaceTarget : MonoBehaviour
     Vector3 direction;
     Quaternion rotation;
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         if (lookTarget != null)
