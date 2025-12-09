@@ -15,7 +15,12 @@ public class Stats : MonoBehaviour
     [SerializeField] public int Villagers = 0;
     [SerializeField] public int Happiness = 10;
 
-    private GameObject[] getCount;
+    private GameObject[] getCountFood;
+    private GameObject[] getCountWood;
+    private GameObject[] getCountStone;
+    private GameObject[] getCountHouse;
+    private GameObject[] getCountVagabond;
+    private GameObject[] getCountUnemployed;
 
     private void Start()
     {
@@ -24,8 +29,14 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        getCount = GameObject.FindGameObjectsWithTag("food");
-        Villagers = getCount.Length;
+        getCountFood = GameObject.FindGameObjectsWithTag("food");
+        getCountWood = GameObject.FindGameObjectsWithTag("wood");
+        getCountStone = GameObject.FindGameObjectsWithTag("stone");
+        getCountHouse = GameObject.FindGameObjectsWithTag("house");
+        getCountVagabond = GameObject.FindGameObjectsWithTag("vagabond");
+        getCountUnemployed = GameObject.FindGameObjectsWithTag("unemployed");
+
+        Villagers = getCountFood.Length + getCountWood.Length + getCountStone.Length + getCountHouse.Length + getCountVagabond.Length + getCountUnemployed.Length;
 
         if (Happiness <= 0)
         {

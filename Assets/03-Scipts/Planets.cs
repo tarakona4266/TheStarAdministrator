@@ -8,18 +8,40 @@ public class TestPlanet : MonoBehaviour
 {
     [SerializeField] private int Workers = 0;
     [SerializeField] int TimeSecond;
-    [SerializeField] GameObject Stats;
+    [SerializeField] Stats Stats;
 
     public int Buildings = 0;
 
     void OnTriggerEnter (Collider other)
     {
-        print(other.gameObject);
         if (tag == "planet_"+other.gameObject.tag && Stats.GetComponent<DayNightCycle>().IsDayActive) 
         {
             other.transform.GetChild(0).gameObject.SetActive(false);
             other.transform.GetChild(1).gameObject.SetActive(false);
+            other.transform.GetChild(2).gameObject.SetActive(false);
+
             Workers++;
+        }
+        else if (Stats.GetComponent<DayNightCycle>().IsDayActive == false && tag == "planet_house" && Stats.HouseLeft > 0)
+        {
+            other.transform.GetChild(0).gameObject.SetActive(false);
+            other.transform.GetChild(1).gameObject.SetActive(false);
+            other.transform.GetChild(2).gameObject.SetActive(false);
+
+            other.GetComponent<Villager>().Eeping();
+            Stats.HouseLeft--;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (tag == "planet_" + other.gameObject.tag && Stats.GetComponent<DayNightCycle>().IsDayActive)
+        {
+            other.transform.GetChild(0).gameObject.SetActive(true);
+            other.transform.GetChild(1).gameObject.SetActive(true);
+            other.transform.GetChild(2).gameObject.SetActive(true);
+
+            Workers--;
         }
     }
 
@@ -47,13 +69,13 @@ public class TestPlanet : MonoBehaviour
             switch (this.gameObject.tag)
             {
                 case "planet_food":
-                    Stats.GetComponent<Stats>().Food += Workers * (Buildings + 1);
+                    Stats.Food += Workers * (Buildings + 1);
                     break;
                 case "planet_wood":
-                    Stats.GetComponent<Stats>().Wood += Workers;
+                    Stats.Wood += Workers;
                     break;
                 case "planet_stone":
-                    Stats.GetComponent<Stats>().Stone += Workers;
+                    Stats.Stone += Workers;
                     break;
                 case "planet_house":
                     //Insert stuff here

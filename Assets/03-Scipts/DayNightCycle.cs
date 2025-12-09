@@ -24,14 +24,17 @@ public class DayNightCycle : MonoBehaviour
 
     void Update()
     {
+        Time.timeScale = 1;
         ts = stopWatch.Elapsed;
         TimeSecond = ts.Seconds;
         TimeMinute = ts.Minutes;
 
         if (TimeMinute == 5) 
         {
+            Stats.HouseLeft = Stats.House;
             if (IsDayActive) 
             {
+                Stats.HouseLeft = Stats.House;
                 if (Stats.Villagers <= Stats.Food)
                 {
                     Stats.Villagers = Stats.Food;

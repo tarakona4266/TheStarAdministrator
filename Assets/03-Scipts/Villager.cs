@@ -9,10 +9,15 @@ using UnityEngine.UIElements;
 public class Villager : MonoBehaviour
 {
     int age = 0;
+
     int deathAge;
     public string job;
     public float speed;
+
+    bool night;
     public bool tired;
+    public bool IsSleeping;
+    bool CanGiveHappiness;
 
     [SerializeField] public GameObject FoodPlanet;
     [SerializeField] public GameObject WoodPlanet;
@@ -37,15 +42,23 @@ public class Villager : MonoBehaviour
 
         if (Stats.GetComponent<DayNightCycle>().IsDayActive == false)
         {
-            tired = true;
-            transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.SetActive(true);
+            if (night)
+            {
+                tired = true;
+                CanGiveHappiness = true;
+                IsSleeping = false;
+                night = false;
+            }
 
-            if (Stats.HouseLeft > 0)
+            if (Stats.HouseLeft > 0 && IsSleeping == false)
             {
                 transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
                 transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
-                tired = false;
+            }
+            else if (IsSleeping == true)
+            {
+                transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+                transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
             }
             else
             {
@@ -55,11 +68,23 @@ public class Villager : MonoBehaviour
         }
         else if (Stats.GetComponent<DayNightCycle>().IsDayActive == true)
         {
-            if (tired) 
+            if (!night)
+            {
+                age++;
+                night = true;
+            }
+            if (!tired && CanGiveHappiness)
+            {
+                Stats.Happiness++;
+                CanGiveHappiness = false;
+            }
+            else if (tired) 
             { 
-                Stats.Happiness--; 
+                Stats.Happiness--;
+                CanGiveHappiness = false;
                 tired = false; 
             }
+            
 
             switch (job) //Check the villager job and make them act accordingly by calling the correct function
             {
@@ -82,8 +107,16 @@ public class Villager : MonoBehaviour
                 case "vagabond":
                     break;
                 default:
+                    transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
             }
         }
+    }
+
+    public void Eeping()
+    {
+        tired = false;
+        IsSleeping = true;
+        print("dodo");
     }
 }
