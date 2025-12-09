@@ -6,8 +6,12 @@ using UnityEngine.UI;
 
 public class UIBehaviour : MonoBehaviour
 {
-    [SerializeField] TMP_Text UIText;
-    [SerializeField] TMP_Text HappinessText;
+    [SerializeField] TMP_Text FoodText;
+    [SerializeField] TMP_Text WoodText;
+    [SerializeField] TMP_Text StoneText;
+    [SerializeField] TMP_Text VillagerText;
+    [SerializeField] TMP_Text HouseText;
+
     [SerializeField] Stats Stats;
 
     [SerializeField] DayNightCycle DayNightCycle;
@@ -23,17 +27,13 @@ public class UIBehaviour : MonoBehaviour
 
     void Update()
     {
-        UIText.text = ("Food : " + Stats.Food);
-        UIText.text += ("\nWood : " + Stats.Wood);
-        UIText.text += ("\nStone : " + Stats.Stone);
+        FoodText.text = Stats.Food.ToString();
+        WoodText.text = Stats.Wood.ToString();
+        StoneText.text = Stats.Stone.ToString();
+        VillagerText.text = Stats.Villagers.ToString();
 
-        if (Stats.House < Stats.Villagers) { UIText.text += ("\n\n" + "<color=red>" + "Houses : " + Stats.House + "</color>"); }
-        else { UIText.text += ("\n\nHouses : " + Stats.House); }
-
-        UIText.text += ("\nVillagers : " + Stats.Villagers);
-
-        HappinessText.text = ("Happiness : " + Stats.Happiness);
-        HappinessSlider.value = Stats.Happiness;
+        if (Stats.House < Stats.Villagers) { HouseText.text += ("<color=red>" + Stats.House + "</color>"); }
+        else { HouseText.text = Stats.House.ToString(); }
 
         if (DayNightCycle.IsDayActive)
         {
@@ -46,6 +46,6 @@ public class UIBehaviour : MonoBehaviour
             Icon.sprite = Moon;
         }
         DaySlider.value = 60 * DayNightCycle.TimeMinute + DayNightCycle.TimeSecond;
-
+        HappinessSlider.value = Stats.Happiness;
     }
 }
