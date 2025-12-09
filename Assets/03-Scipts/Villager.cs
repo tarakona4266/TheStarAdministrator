@@ -40,23 +40,44 @@ public class Villager : MonoBehaviour
             tired = true;
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(1).gameObject.SetActive(true);
-        }
 
-        if (!tired)
+            if (Stats.HouseLeft > 0)
+            {
+                transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+                transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
+                tired = false;
+            }
+            else
+            {
+                transform.position += new Vector3(-transform.position.x, -transform.position.y, -transform.position.z).normalized * speed;
+                transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(-transform.position.x, -transform.position.z) * Mathf.Rad2Deg, 0f);
+            }
+        }
+        else if (Stats.GetComponent<DayNightCycle>().IsDayActive == true)
         {
+            if (tired) 
+            { 
+                Stats.Happiness--; 
+                tired = false; 
+            }
+
             switch (job) //Check the villager job and make them act accordingly by calling the correct function
             {
                 case "food":
                     transform.position += new Vector3(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.y - transform.position.y, FoodPlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "wood":
                     transform.position += new Vector3(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.y - transform.position.y, WoodPlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
-                case "minor":
+                case "miner":
                     transform.position += new Vector3(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.y - transform.position.y, StonePlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "builder":
                     transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "vagabond":
                     break;
@@ -64,10 +85,5 @@ public class Villager : MonoBehaviour
                     break;
             }
         }
-        else
-        {
-            transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
-
-        } 
     }
 }

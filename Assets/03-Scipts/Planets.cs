@@ -8,7 +8,9 @@ public class TestPlanet : MonoBehaviour
 {
     [SerializeField] private int Workers = 0;
     [SerializeField] int TimeSecond;
-    [SerializeField] GameObject Stats; 
+    [SerializeField] GameObject Stats;
+
+    public int Buildings = 0;
 
     void OnTriggerEnter (Collider other)
     {
@@ -44,17 +46,17 @@ public class TestPlanet : MonoBehaviour
         {
             switch (this.gameObject.tag)
             {
-                case "food":
-                    Stats.GetComponent<Stats>().Food += Workers;
+                case "planet_food":
+                    Stats.GetComponent<Stats>().Food += Workers * (Buildings + 1);
                     break;
-                case "wood":
+                case "planet_wood":
                     Stats.GetComponent<Stats>().Wood += Workers;
                     break;
-                case "stone":
+                case "planet_stone":
                     Stats.GetComponent<Stats>().Stone += Workers;
                     break;
-                case "house":
-                    Stats.GetComponent<Stats>().House += Workers;
+                case "planet_house":
+                    //Insert stuff here
                     break;
             }
             stopWatch.Restart();
