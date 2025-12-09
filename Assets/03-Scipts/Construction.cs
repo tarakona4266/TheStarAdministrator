@@ -10,6 +10,7 @@ public class Construction : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] bool homePlanet = true;
     [SerializeField] GameObject house;
+    [SerializeField] GameObject school;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject deco;
 
@@ -23,7 +24,6 @@ public class Construction : MonoBehaviour
 
     void Start()
     {
-        SelectPrefab(house);
     }
 
     void Update()
@@ -45,6 +45,7 @@ public class Construction : MonoBehaviour
                             buildRotation = hit.normal;
                             buildPosition = hit.point;
                             validPlanet = true;
+                            print("home planet");
 
                         }
                         else if (!homePlanet && tag == "planet_food")
@@ -52,29 +53,71 @@ public class Construction : MonoBehaviour
                             buildRotation = hit.normal;
                             buildPosition = hit.point;
                             validPlanet = true;
+                            print("food planet");
                         }
                         else
                         {
                             validPlanet = false;
+                            print("no valid planet");
                         }
+                    }
+                    else
+                    {
+                        validPlanet = false;
+                        print("no valid planet");
                     }
                 }
                 
                 // dislay building preview
                 if (validPlanet)
                 {
+                    toBuild.SetActive(true);
                     toBuild.transform.position = buildPosition;
                     toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+                }
+                else
+                {
+                    toBuild.SetActive(false);
                 }
             }
         }
     }
 
-    public void SelectPrefab(GameObject prefab)
+    public void EnableConstructionMode()
     {
-        toBuild = Instantiate(prefab, transform);
-        toBuild.transform.position = buildPosition;
-        toBuild.transform.rotation = Quaternion.Euler(buildRotation);
-        toBuild.SetActive(true);
+        if (constructionMode) { constructionMode = false; }
+        else { constructionMode = true; }
+    }
+
+    public void SelectPrefab(string prefabName)
+    {
+        if (toBuild != null)
+        {
+            Destroy(toBuild);
+        }
+        switch (prefabName)
+            {
+            case "house":
+                toBuild = Instantiate(house, transform);
+                print("house selected");
+                break;
+            case "farm":
+                toBuild = Instantiate(farm, transform);
+                print("farm selected");
+                break;
+            case "school":
+                toBuild = Instantiate(school, transform);
+                print("school selected");
+                break;
+            case "deco":
+                toBuild = Instantiate(deco, transform);
+                print("decoration selected");
+                break;
+        }
+        if (toBuild != null)
+        {
+            toBuild.transform.position = buildPosition;
+            toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+        }
     }
 }
