@@ -21,6 +21,7 @@ public class Construction : MonoBehaviour
     GameObject toBuild;
     Vector3 buildPosition;
     Vector3 buildRotation;
+    Vector3 rayDir;
 
     void Start()
     {
@@ -44,36 +45,41 @@ public class Construction : MonoBehaviour
                         {
                             buildRotation = hit.normal;
                             buildPosition = hit.point;
+                            rayDir = ray.direction;
                             validPlanet = true;
-                            print("home planet");
-
                         }
                         else if (!homePlanet && tag == "planet_food")
                         {
                             buildRotation = hit.normal;
                             buildPosition = hit.point;
+                            rayDir = ray.direction;
                             validPlanet = true;
-                            print("food planet");
                         }
                         else
                         {
                             validPlanet = false;
-                            print("no valid planet");
                         }
-                    }
-                    else
-                    {
-                        validPlanet = false;
-                        print("no valid planet");
+                            Debug.DrawRay(hit.point, hit.normal, Color.cyan);
                     }
                 }
-                
+                else
+                {
+                    validPlanet = false;
+                }
+
                 // dislay building preview
                 if (validPlanet)
                 {
-                    toBuild.SetActive(true);
+                    if (!toBuild.gameObject.activeSelf) { toBuild.SetActive(true); }
                     toBuild.transform.position = buildPosition;
-                    toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
+                    toBuild.transform.rotation = rotation;
+
+                    // check for obstacles
+
+
+                    // build
+
                 }
                 else
                 {
