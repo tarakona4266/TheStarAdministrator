@@ -14,7 +14,6 @@ public class Billboard : MonoBehaviour
     void Update()
     {
         Vector3 camPosition = cam.transform.position;
-        camPosition.y = transform.position.y;
         transform.LookAt(camPosition);
     }
 }
