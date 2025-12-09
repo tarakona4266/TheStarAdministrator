@@ -17,6 +17,7 @@ public class Construction : MonoBehaviour
     public bool constructionMode;
     bool validPlanet;
     bool validLocation;
+    bool mouseLeftClick;
 
     GameObject toBuild;
     Vector3 buildPosition;
@@ -71,15 +72,19 @@ public class Construction : MonoBehaviour
                 if (validPlanet)
                 {
                     if (!toBuild.gameObject.activeSelf) { toBuild.SetActive(true); }
+
                     toBuild.transform.position = buildPosition;
-                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
+
+                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation; // wrong Y
                     toBuild.transform.rotation = rotation;
 
-                    // check for obstacles
+                    {   // if no overlap with other building
+                        mouseLeftClick = Input.GetMouseButtonDown(0);
+                        if (mouseLeftClick)
+                        {
 
-
-                    // build
-
+                        }
+                    }
                 }
                 else
                 {
@@ -91,7 +96,11 @@ public class Construction : MonoBehaviour
 
     public void EnableConstructionMode()
     {
-        if (constructionMode) { constructionMode = false; }
+        if (constructionMode)
+        { 
+            constructionMode = false;
+            if (toBuild != null) { Destroy(toBuild); }
+        }
         else { constructionMode = true; }
     }
 
@@ -125,5 +134,10 @@ public class Construction : MonoBehaviour
             toBuild.transform.position = buildPosition;
             toBuild.transform.rotation = Quaternion.Euler(buildRotation);
         }
+    }
+
+    void Build()
+    {
+
     }
 }

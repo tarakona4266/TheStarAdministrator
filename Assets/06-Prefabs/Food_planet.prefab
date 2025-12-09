@@ -358,7 +358,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraFocus: {fileID: 0}
   gameStats: {fileID: 0}
+  rotationReference: {fileID: 0}
+  rotationReferenceTarget: {fileID: 0}
+  homePlanet: 0
   house: {fileID: 8357002249547698258}
+  school: {fileID: 0}
   farm: {fileID: 8357002249547698258}
   deco: {fileID: 8357002249547698258}
   constructionMode: 1
@@ -428,6 +432,7 @@ MonoBehaviour:
   Workers: 0
   TimeSecond: 0
   Stats: {fileID: 0}
+  Buildings: 0
 --- !u!135 &91635730028705654
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -443,7 +448,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
