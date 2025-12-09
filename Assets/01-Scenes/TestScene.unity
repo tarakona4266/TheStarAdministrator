@@ -921,13 +921,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &406983695
-BoxCollider:
+--- !u!61 &406983695
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406983691}
+  m_Enabled: 0
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -936,12 +938,34 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 54.83, y: 28.175003, z: 13}
-  m_Center: {x: 0, y: 9.8, z: 0}
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 9.31911}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.175}
+    oldSize: {x: 58.88, y: 28.175001}
+    newSize: {x: 58.88, y: 28.175001}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 58.88, y: 31.094904}
+  m_EdgeRadius: 0
 --- !u!1 &409867980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2146,7 @@ MonoBehaviour:
       - m_Target: {fileID: 5036260263206869266}
         m_TargetAssemblyTypeName: Construction, Assembly-CSharp
         m_MethodName: SelectPrefab
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2131,7 +2155,7 @@ MonoBehaviour:
           m_StringArgument: house
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &854206061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 434815617}
-  orbitalVelocity: 3
+  orbitalVelocity: 1
 --- !u!1 &991196510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,11 +2828,11 @@ MonoBehaviour:
       - m_Target: {fileID: 5036260263206869266}
         m_TargetAssemblyTypeName: Construction, Assembly-CSharp
         m_MethodName: SelectPrefab
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: school
           m_BoolArgument: 0
@@ -2902,11 +2926,11 @@ MonoBehaviour:
       - m_Target: {fileID: 5036260263206869266}
         m_TargetAssemblyTypeName: Construction, Assembly-CSharp
         m_MethodName: SelectPrefab
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: deco
           m_BoolArgument: 0
@@ -2997,13 +3021,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1456810039
-BoxCollider:
+--- !u!61 &1456810039
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456810035}
+  m_Enabled: 0
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3012,12 +3038,34 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 28, y: 28.175001, z: 13}
-  m_Center: {x: 0, y: 11.5, z: 0}
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.21629906, y: 12.328497}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.1901535}
+    oldSize: {x: 58.88, y: 28.175001}
+    newSize: {x: 58.88, y: 28.175001}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 29.897274, y: 31.851921}
+  m_EdgeRadius: 0
 --- !u!1 &1494741620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3048,7 +3096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 434815617}
-  orbitalVelocity: 4
+  orbitalVelocity: 0.75
 --- !u!4 &1494741622
 Transform:
   m_ObjectHideFlags: 0
@@ -3323,7 +3371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 434815617}
-  orbitalVelocity: 1
+  orbitalVelocity: 0.5
 --- !u!4 &1665164919
 Transform:
   m_ObjectHideFlags: 0
@@ -3803,7 +3851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 434815617}
-  orbitalVelocity: 2
+  orbitalVelocity: 0.25
 --- !u!4 &2086917644
 Transform:
   m_ObjectHideFlags: 0
@@ -4211,8 +4259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraFocus: {fileID: 1318544361}
   gameStats: {fileID: 409867981}
-  rotationReference: {fileID: 0}
-  rotationReferenceTarget: {fileID: 0}
   homePlanet: 1
   house: {fileID: 0}
   school: {fileID: 0}

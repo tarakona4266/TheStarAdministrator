@@ -1,10 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Construction : MonoBehaviour
 {
+    enum Buildings
+    {
+        house,
+        school,
+        deco,
+        farm
+    }
+    Buildings cuurentPrefab;
+
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
     [Header("Prefabs")]
@@ -16,17 +26,13 @@ public class Construction : MonoBehaviour
 
     public bool constructionMode;
     bool validPlanet;
-    bool validLocation;
-    bool mouseLeftClick;
+
+    bool mouseRightClick;
 
     GameObject toBuild;
     Vector3 buildPosition;
     Vector3 buildRotation;
     Vector3 rayDir;
-
-    void Start()
-    {
-    }
 
     void Update()
     {
@@ -60,7 +66,7 @@ public class Construction : MonoBehaviour
                         {
                             validPlanet = false;
                         }
-                            Debug.DrawRay(hit.point, hit.normal, Color.cyan);
+                        Debug.DrawRay(hit.point, hit.normal, Color.cyan);
                     }
                 }
                 else
@@ -74,16 +80,13 @@ public class Construction : MonoBehaviour
                     if (!toBuild.gameObject.activeSelf) { toBuild.SetActive(true); }
 
                     toBuild.transform.position = buildPosition;
-
-                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation; // wrong Y
+                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
                     toBuild.transform.rotation = rotation;
 
-                    {   // if no overlap with other building
-                        mouseLeftClick = Input.GetMouseButtonDown(0);
-                        if (mouseLeftClick)
-                        {
-
-                        }
+                    mouseRightClick = Input.GetMouseButtonDown(1);
+                    if (mouseRightClick)
+                    {
+                        Build();
                     }
                 }
                 else
@@ -97,36 +100,37 @@ public class Construction : MonoBehaviour
     public void EnableConstructionMode()
     {
         if (constructionMode)
-        { 
+        {
             constructionMode = false;
             if (toBuild != null) { Destroy(toBuild); }
         }
         else { constructionMode = true; }
     }
 
-    public void SelectPrefab(string prefabName)
+    public void SelectPrefab(int prefabIndex)
     {
         if (toBuild != null)
         {
             Destroy(toBuild);
         }
-        switch (prefabName)
-            {
-            case "house":
+        Buildings prefabType = (Buildings)prefabIndex;
+        switch (prefabType)
+        {
+            case Buildings.house:
+                cuurentPrefab = Buildings.house;
                 toBuild = Instantiate(house, transform);
-                print("house selected");
                 break;
-            case "farm":
+            case Buildings.farm:
+                cuurentPrefab = Buildings.farm;
                 toBuild = Instantiate(farm, transform);
-                print("farm selected");
                 break;
-            case "school":
+            case Buildings.school:
+                cuurentPrefab = Buildings.school;
                 toBuild = Instantiate(school, transform);
-                print("school selected");
                 break;
-            case "deco":
+            case Buildings.deco:
+                cuurentPrefab = Buildings.deco;
                 toBuild = Instantiate(deco, transform);
-                print("decoration selected");
                 break;
         }
         if (toBuild != null)
@@ -138,6 +142,32 @@ public class Construction : MonoBehaviour
 
     void Build()
     {
-
+        if (validPlanet) {
+            GameObject build = null;
+            switch (cuurentPrefab)
+            {
+                case Buildings.house:
+                    cuurentPrefab = Buildings.house;
+                    build = Instantiate(house, toBuild.transform.position, toBuild.transform.rotation, transform);
+                    break;
+                case Buildings.farm:
+                    cuurentPrefab = Buildings.farm;
+                    build = Instantiate(farm, toBuild.transform.position, toBuild.transform.rotation, transform);
+                    break;
+                case Buildings.school:
+                    cuurentPrefab = Buildings.school;
+                    build = Instantiate(school, toBuild.transform.position, toBuild.transform.rotation, transform);
+                    break;
+                case Buildings.deco:
+                    cuurentPrefab = Buildings.deco;
+                    build = Instantiate(deco, toBuild.transform.position, toBuild.transform.rotation, transform);
+                    break;
+            }
+            if (build != null)
+            {
+                build.SetActive(true);
+                build.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
     }
 }
