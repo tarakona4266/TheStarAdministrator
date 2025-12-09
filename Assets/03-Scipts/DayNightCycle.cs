@@ -15,6 +15,8 @@ public class DayNightCycle : MonoBehaviour
     public int TimeSecond;
     public int TimeMinute;
 
+    [SerializeField] Stats Stats;
+
     private void Start()
     {
         stopWatch.Start();
@@ -28,8 +30,22 @@ public class DayNightCycle : MonoBehaviour
 
         if (TimeMinute == 5) 
         {
-            if (IsDayActive) { IsDayActive = false; }
-            else { IsDayActive = true; }
+            if (IsDayActive) 
+            {
+                if (Stats.Villagers <= Stats.Food)
+                {
+                    Stats.Villagers = Stats.Food;
+                }
+                else
+                {
+                    Stats.Food = 0;
+                }
+                IsDayActive = false; 
+            }
+            else 
+            { 
+                IsDayActive = true; 
+            }
             stopWatch.Restart();
         }
     }
