@@ -77,7 +77,7 @@ public class Construction : MonoBehaviour
                 // dislay building preview
                 if (validPlanet)
                 {
-                    if (!toBuild.gameObject.activeSelf) { toBuild.SetActive(true); }
+                    toBuild.SetActive(true);
 
                     toBuild.transform.position = buildPosition;
                     Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
@@ -104,10 +104,13 @@ public class Construction : MonoBehaviour
             constructionMode = false;
             if (toBuild != null) { Destroy(toBuild); }
         }
-        else { constructionMode = true; }
+        else
+        {
+            constructionMode = true; 
+        }
     }
 
-    public void SelectPrefab(int prefabIndex)
+    public void SelectPrefab(int prefabIndex = 0)
     {
         if (toBuild != null)
         {
