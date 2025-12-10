@@ -8,13 +8,12 @@ public class PlanetFocus : MonoBehaviour
 {
     CinemachineVirtualCamera focusCamera;
     [SerializeField] CinemachineBrain brain;
-    [SerializeField] Canvas surfaceCanvas;
-    GameObject surface;
+    [SerializeField] GameObject surfaceCanvas = null;
+    [SerializeField] GameObject surface;
 
     void Start()
     {
         focusCamera = GetComponentInChildren<CinemachineVirtualCamera>(true);
-        surface = GetComponentInChildren<Construction>(true).gameObject;
     }
 
     public void DoFocus()
