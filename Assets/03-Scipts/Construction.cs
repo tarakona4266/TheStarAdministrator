@@ -170,4 +170,13 @@ public class Construction : MonoBehaviour
             }
         }
     }
+
+    public void OnDisable()
+    {
+        if (constructionMode)
+        {
+            constructionMode = false;
+            if (toBuild != null) { Destroy(toBuild); }
+        }
+    }
 }
