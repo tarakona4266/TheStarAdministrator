@@ -54,10 +54,11 @@ public class UIBehaviour : MonoBehaviour
 
     public void OnClick()
     {
-        if (Stats.Villagers <= 99) 
+        if (Stats.Villagers < 99) 
         {
             GameObject g = GameObject.Instantiate(Villager);
             g.transform.position = new Vector3(0f, 0f, -15f);
+            g.active = true;
         }
         
     }

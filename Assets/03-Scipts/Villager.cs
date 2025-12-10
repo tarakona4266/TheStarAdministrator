@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class Villager : MonoBehaviour
 {
-    int age = 0;
+    public int age = 0;
 
     int deathAge;
     public string job;
@@ -96,11 +96,11 @@ public class Villager : MonoBehaviour
                     transform.position += new Vector3(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.y - transform.position.y, WoodPlanet.transform.position.z - transform.position.z).normalized * speed;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
-                case "miner":
+                case "stone":
                     transform.position += new Vector3(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.y - transform.position.y, StonePlanet.transform.position.z - transform.position.z).normalized * speed;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
-                case "builder":
+                case "house":
                     transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;

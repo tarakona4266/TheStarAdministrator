@@ -317,13 +317,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
+      propertyPath: job
+      value: food
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
       propertyPath: Stats
       value: 
       objectReference: {fileID: 409867981}
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: speed
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -451,8 +456,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1101,6 +1106,11 @@ PrefabInstance:
       propertyPath: brain
       value: 
       objectReference: {fileID: 744990967}
+    - target: {fileID: 3004407466575593182, guid: dfed174dec663e64cb4bb042678a8ea6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4171427397680324074, guid: dfed174dec663e64cb4bb042678a8ea6,
         type: 3}
       propertyPath: Stats
@@ -1168,11 +1178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3308318abca26ec4e938dbea75260891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Food: 10
-  Wood: 10
-  Stone: 10
-  House: 10
-  HouseLeft: 10
+  Food: 0
+  Wood: 0
+  Stone: 0
+  House: 4
+  HouseLeft: 4
   Villagers: 0
   Happiness: 10
 --- !u!4 &409867982
@@ -1232,7 +1242,7 @@ MonoBehaviour:
   Icon: {fileID: 865369540}
   Sun: {fileID: 21300000, guid: 2062089e30702024486331bd9d4fb528, type: 3}
   Moon: {fileID: 21300000, guid: 8ef9875e8c4285441ba60033eb9d79ac, type: 3}
-  Villager: {fileID: 1711628091}
+  Villager: {fileID: 1270126176}
 --- !u!1 &441387073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,8 +1545,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1751,8 +1761,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1872,6 +1882,109 @@ MonoBehaviour:
   m_Spacing: {x: 125, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1001 &642289412
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385381510689992927, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512464265325754625, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_Name
+      value: Villager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512464265325754625, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: job
+      value: unemployed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: Stats
+      value: 
+      objectReference: {fileID: 409867981}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: FoodPlanet
+      value: 
+      objectReference: {fileID: 2122965718}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: WoodPlanet
+      value: 
+      objectReference: {fileID: 602119486}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: HousePlanet
+      value: 
+      objectReference: {fileID: 22242630}
+    - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+        type: 3}
+      propertyPath: StonePlanet
+      value: 
+      objectReference: {fileID: 1487378020}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b, type: 3}
 --- !u!1001 &647252426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1993,7 +2106,7 @@ PrefabInstance:
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: speed
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -2388,7 +2501,7 @@ PrefabInstance:
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: speed
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -7548,8 +7661,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7811,6 +7924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: planet_house
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759475791410971673, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9012598723125028173, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
         type: 3}
@@ -8348,6 +8466,47 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &1217719874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217719875}
+  m_Layer: 5
+  m_Name: ---VILLAGERS---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1217719875
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217719874}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 500, y: 890.9091}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1270126176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7512464265325754625, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
+    type: 3}
+  m_PrefabInstance: {fileID: 642289412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1295905614
 GameObject:
   m_ObjectHideFlags: 0
@@ -8603,7 +8762,7 @@ PrefabInstance:
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
       propertyPath: speed
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8768881345814379417, guid: a6d62c5fb3ae2d44c86ed4ef31e6b39b,
         type: 3}
@@ -8654,6 +8813,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 91635730028705654, guid: 71176afcd9092c74b801c7ddcfb0e682,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 709373079963927692, guid: 71176afcd9092c74b801c7ddcfb0e682,
         type: 3}
       propertyPath: brain
@@ -8794,6 +8958,11 @@ PrefabInstance:
       propertyPath: Stats
       value: 
       objectReference: {fileID: 409867981}
+    - target: {fileID: 6288882167715496374, guid: a4cc16910b04a90428b7c54f3b1159ea,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6907154285928723020, guid: a4cc16910b04a90428b7c54f3b1159ea,
         type: 3}
       propertyPath: brain
@@ -14151,8 +14320,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -25224,10 +25393,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 39191875}
-  - {fileID: 808917886}
-  - {fileID: 647252426}
-  - {fileID: 1317628865}
   - {fileID: 409867982}
   - {fileID: 832575519}
   - {fileID: 1110567105}
@@ -25246,3 +25411,9 @@ SceneRoots:
   - {fileID: 10464556}
   - {fileID: 1412773132}
   - {fileID: 275449867}
+  - {fileID: 1217719875}
+  - {fileID: 642289412}
+  - {fileID: 39191875}
+  - {fileID: 808917886}
+  - {fileID: 647252426}
+  - {fileID: 1317628865}
