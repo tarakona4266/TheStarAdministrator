@@ -14,6 +14,7 @@ public class Construction_food : MonoBehaviour
     bool validPlanet;
 
     bool mouseRightClick;
+    bool doOnce = true;
 
     GameObject toBuild;
     Vector3 buildPosition;
@@ -59,9 +60,17 @@ public class Construction_food : MonoBehaviour
                     toBuild.SetActive(true);
 
                     toBuild.transform.position = buildPosition;
-                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
-                    toBuild.transform.rotation = rotation;
 
+                    Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
+                    rotation.Normalize();
+
+                    toBuild.transform.rotation = rotation;
+                    if (doOnce)
+                    {
+                        toBuild.transform.Rotate(Vector3.up, 30f, Space.Self);
+                        doOnce = false;
+                    }
+                    
                     mouseRightClick = Input.GetMouseButtonDown(1);
                     if (mouseRightClick)
                     {
@@ -110,11 +119,12 @@ public class Construction_food : MonoBehaviour
             if (build != null)
             {
                 build.SetActive(true);
-                //build.GetComponent<BoxCollider2D>().enabled = true;
+                build.GetComponent<BoxCollider2D>().enabled = true;
+                gameStats.Farm++;
             }
         }
     }
-
+    
     public void OnDisable()
     {
         if (constructionMode)
