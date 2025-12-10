@@ -152,15 +152,20 @@ public class Construction : MonoBehaviour
                 case Buildings.house:
                     cuurentPrefab = Buildings.house;
                     build = Instantiate(house, toBuild.transform.position, toBuild.transform.rotation, transform);
+                    gameStats.House++;
                     break;
+
                 case Buildings.farm:
                     cuurentPrefab = Buildings.farm;
                     build = Instantiate(farm, toBuild.transform.position, toBuild.transform.rotation, transform);
+                    gameStats.Farm++;
                     break;
+
                 case Buildings.school:
                     cuurentPrefab = Buildings.school;
                     build = Instantiate(school, toBuild.transform.position, toBuild.transform.rotation, transform);
                     break;
+
                 case Buildings.deco:
                     cuurentPrefab = Buildings.deco;
                     build = Instantiate(deco, toBuild.transform.position, toBuild.transform.rotation, transform);
