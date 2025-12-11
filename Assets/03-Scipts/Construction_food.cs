@@ -9,6 +9,7 @@ public class Construction_food : MonoBehaviour
     [SerializeField] Stats gameStats;
     [Header("Prefabs")]
     [SerializeField] GameObject farm;
+    [SerializeField] float rotationOffset = 0f;
 
     public bool constructionMode;
     bool validPlanet;
@@ -65,9 +66,9 @@ public class Construction_food : MonoBehaviour
                     rotation.Normalize();
 
                     toBuild.transform.rotation = rotation;
-                    if (doOnce)
+                    if (doOnce) // otherwise the building dosen't face the camera
                     {
-                        toBuild.transform.Rotate(Vector3.up, 30f, Space.Self);
+                        toBuild.transform.Rotate(Vector3.up, rotationOffset, Space.Self);
                         doOnce = false;
                     }
                     
@@ -95,6 +96,7 @@ public class Construction_food : MonoBehaviour
         else
         {
             constructionMode = true;
+            doOnce = true;
         }
     }
 

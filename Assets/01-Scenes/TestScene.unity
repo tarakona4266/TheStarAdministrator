@@ -1167,18 +1167,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350472129}
   m_CullTransparentMesh: 1
---- !u!1 &354912064 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8488451950656692376, guid: 71176afcd9092c74b801c7ddcfb0e682,
-    type: 3}
-  m_PrefabInstance: {fileID: 6035286334967866179}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &406983691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 566550015204548744, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5036260263206869264}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409867980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1201,7 @@ MonoBehaviour:
   Stone: 0
   House: 0
   HouseLeft: 0
+  Farm: 0
   Villagers: 0
   Happiness: 50
 --- !u!4 &409867982
@@ -3099,34 +3088,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetInfos: {fileID: 135956134}
---- !u!1 &1344941287 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4458416214114229898, guid: 71176afcd9092c74b801c7ddcfb0e682,
+--- !u!114 &1344941288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7966145056953120516, guid: 71176afcd9092c74b801c7ddcfb0e682,
     type: 3}
   m_PrefabInstance: {fileID: 6035286334967866179}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1344941288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344941287}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77ea7e9c9bd1e4f449be9376405477eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFocus: {fileID: 1318544361}
-  gameStats: {fileID: 409867981}
-  farm: {fileID: 354912064}
-  constructionMode: 0
---- !u!1 &1360761499 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 527891143515879059, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5036260263206869264}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415016599
 GameObject:
   m_ObjectHideFlags: 3
@@ -3373,12 +3346,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!1 &1456810035 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4468029288980556819, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5036260263206869264}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1494741620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,7 +4706,7 @@ MonoBehaviour:
           m_StringArgument: house
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &2142278309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,11 +4881,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cristal_planet
       objectReference: {fileID: 0}
-    - target: {fileID: 2580031692861183576, guid: a4cc16910b04a90428b7c54f3b1159ea,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5121919556950762114, guid: a4cc16910b04a90428b7c54f3b1159ea,
         type: 3}
       propertyPath: Stats
@@ -4990,8 +4952,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1944746003}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2580031692861183576, guid: a4cc16910b04a90428b7c54f3b1159ea, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4cc16910b04a90428b7c54f3b1159ea, type: 3}
@@ -5008,34 +4969,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1744229657}
     - target: {fileID: 4582602815960211, guid: 85dd0e3a6e8c9754fa3d967ef78299e9, type: 3}
-      propertyPath: house
-      value: 
-      objectReference: {fileID: 1456810035}
-    - target: {fileID: 4582602815960211, guid: 85dd0e3a6e8c9754fa3d967ef78299e9, type: 3}
-      propertyPath: school
-      value: 
-      objectReference: {fileID: 406983691}
-    - target: {fileID: 4582602815960211, guid: 85dd0e3a6e8c9754fa3d967ef78299e9, type: 3}
       propertyPath: gameStats
       value: 
       objectReference: {fileID: 409867981}
     - target: {fileID: 4582602815960211, guid: 85dd0e3a6e8c9754fa3d967ef78299e9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4582602815960211, guid: 85dd0e3a6e8c9754fa3d967ef78299e9, type: 3}
       propertyPath: cameraFocus
       value: 
       objectReference: {fileID: 1318544361}
-    - target: {fileID: 4582602815960211, guid: 85dd0e3a6e8c9754fa3d967ef78299e9, type: 3}
-      propertyPath: constructionMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 527891143515879059, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2378327164578868727, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
         type: 3}
       propertyPath: lookTarget
@@ -5056,11 +4996,6 @@ PrefabInstance:
       propertyPath: brain
       value: 
       objectReference: {fileID: 169140561}
-    - target: {fileID: 6331141675367561365, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
-        type: 3}
-      propertyPath: surface
-      value: 
-      objectReference: {fileID: 1360761499}
     - target: {fileID: 6331141675367561365, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
         type: 3}
       propertyPath: surfaceCanvas
@@ -5121,11 +5056,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Home_planet
       objectReference: {fileID: 0}
-    - target: {fileID: 9012598723125028173, guid: 85dd0e3a6e8c9754fa3d967ef78299e9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5137,7 +5067,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5036260263206869264}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360761499}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01f9a0897c98a2f43bc584195c6ca989, type: 3}
@@ -5232,8 +5162,7 @@ PrefabInstance:
       value: Wood_planet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6717480074444138800, guid: dfed174dec663e64cb4bb042678a8ea6, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfed174dec663e64cb4bb042678a8ea6, type: 3}
@@ -5245,21 +5174,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 91635730028705654, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 709373079963927692, guid: 71176afcd9092c74b801c7ddcfb0e682,
         type: 3}
       propertyPath: brain
       value: 
       objectReference: {fileID: 169140561}
-    - target: {fileID: 709373079963927692, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: surface
-      value: 
-      objectReference: {fileID: 1344941287}
     - target: {fileID: 709373079963927692, guid: 71176afcd9092c74b801c7ddcfb0e682,
         type: 3}
       propertyPath: surfaceCanvas
@@ -5270,46 +5189,6 @@ PrefabInstance:
       propertyPath: Stats
       value: 
       objectReference: {fileID: 409867980}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: deco
-      value: 
-      objectReference: {fileID: 354912064}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: farm
-      value: 
-      objectReference: {fileID: 354912064}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: house
-      value: 
-      objectReference: {fileID: 354912064}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: school
-      value: 
-      objectReference: {fileID: 354912064}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: gameStats
-      value: 
-      objectReference: {fileID: 409867981}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: cameraFocus
-      value: 
-      objectReference: {fileID: 1318544361}
-    - target: {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: constructionMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2270321809534617813, guid: 71176afcd9092c74b801c7ddcfb0e682,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5415,16 +5294,6 @@ PrefabInstance:
       propertyPath: positionReference
       value: 
       objectReference: {fileID: 1705239577}
-    - target: {fileID: 3918309098450634520, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4458416214114229898, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6075406868582815209, guid: 71176afcd9092c74b801c7ddcfb0e682,
         type: 3}
       propertyPath: lookTarget
@@ -5435,20 +5304,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food_planet
       objectReference: {fileID: 0}
-    - target: {fileID: 8488451950656692376, guid: 71176afcd9092c74b801c7ddcfb0e682,
+    - target: {fileID: 7966145056953120516, guid: 71176afcd9092c74b801c7ddcfb0e682,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: gameStats
+      value: 
+      objectReference: {fileID: 409867981}
+    - target: {fileID: 7966145056953120516, guid: 71176afcd9092c74b801c7ddcfb0e682,
+        type: 3}
+      propertyPath: cameraFocus
+      value: 
+      objectReference: {fileID: 1318544361}
+    - target: {fileID: 7966145056953120516, guid: 71176afcd9092c74b801c7ddcfb0e682,
+        type: 3}
+      propertyPath: rotationOffset
+      value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1606241870988047029, guid: 71176afcd9092c74b801c7ddcfb0e682, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4458416214114229898, guid: 71176afcd9092c74b801c7ddcfb0e682,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1344941288}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71176afcd9092c74b801c7ddcfb0e682, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
