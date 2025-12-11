@@ -155,7 +155,7 @@ public class Construction : MonoBehaviour
         if (validPlanet)
         {
             // verify ressources
-            bool canBuild = cost.VerifyCost(gameStats.Wood, gameStats.Stone, 1, currentPrefabName);
+            bool canBuild = cost.VerifyCost(gameStats.Wood, gameStats.Stone, 5, currentPrefabName); // temporary worker value
 
             // build
             if (canBuild)
