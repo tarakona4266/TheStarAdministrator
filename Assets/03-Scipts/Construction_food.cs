@@ -7,6 +7,7 @@ public class Construction_food : MonoBehaviour
 {
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
+    [SerializeField] Construction_cost_stats cost;
     [Header("Prefabs")]
     [SerializeField] GameObject farm;
     [SerializeField] float rotationOffset = 0f;
@@ -97,6 +98,7 @@ public class Construction_food : MonoBehaviour
         {
             constructionMode = true;
             doOnce = true;
+            SelectPrefab();
         }
     }
 
@@ -117,12 +119,19 @@ public class Construction_food : MonoBehaviour
     {
         if (validPlanet)
         {
-            GameObject build = Instantiate(farm, toBuild.transform.position, toBuild.transform.rotation, transform);
-            if (build != null)
+            bool canBuild = cost.VerifyCost(gameStats.Wood, gameStats.Stone, 1, "farm");
+
+            if (canBuild)
             {
-                build.SetActive(true);
-                build.GetComponent<BoxCollider2D>().enabled = true;
-                gameStats.Farm++;
+                GameObject build = Instantiate(farm, toBuild.transform.position, toBuild.transform.rotation, transform);
+                if (build != null)
+                {
+                    build.SetActive(true);
+                    build.GetComponent<BoxCollider2D>().enabled = true;
+                    gameStats.Farm++;
+                    gameStats.Wood -= cost.Fwood;
+                    gameStats.Stone -= cost.Fcristal;
+                }
             }
         }
     }
