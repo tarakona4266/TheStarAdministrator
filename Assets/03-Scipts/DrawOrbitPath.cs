@@ -16,7 +16,7 @@ public class DrawOrbitPath : MonoBehaviour
     }
     void DrawCircle()
     {
-        cirlceRenderer.positionCount = segments; 
+        cirlceRenderer.positionCount = segments + 1; 
         for (int currentStep = 0; currentStep <= segments; currentStep++)
         {
             float circumferenceProgress = (float)currentStep / segments; 
@@ -28,8 +28,6 @@ public class DrawOrbitPath : MonoBehaviour
             Vector3 currentPosition = new Vector3(x, 0, z);
 
             cirlceRenderer.SetPosition(currentStep, currentPosition);
-            print($"Progress : {currentStep}, Point position : {currentPosition}");
-
         }
     }
 }

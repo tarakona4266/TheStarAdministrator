@@ -10,6 +10,7 @@ public class PlanetFocus : MonoBehaviour
     [SerializeField] CinemachineBrain brain;
     [SerializeField] GameObject surfaceCanvas = null;
     [SerializeField] GameObject surface;
+    [SerializeField] LineRenderer orbitRenderer;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlanetFocus : MonoBehaviour
     public void DoFocus()
     {
         surface.SetActive(true);
+        orbitRenderer.enabled = false;
         focusCamera.gameObject.SetActive(true);
         if (surfaceCanvas != null) { surfaceCanvas.gameObject.SetActive(true); }
     }
@@ -28,6 +30,7 @@ public class PlanetFocus : MonoBehaviour
         focusCamera.gameObject.SetActive(false);
         if (surfaceCanvas != null) { surfaceCanvas.gameObject.SetActive(false); }
         surface.SetActive(false);
+        orbitRenderer.enabled = true;
     }
 
 }

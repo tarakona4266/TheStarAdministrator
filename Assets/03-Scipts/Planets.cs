@@ -47,7 +47,7 @@ public class TestPlanet : MonoBehaviour
             switch (this.gameObject.tag)
             {
                 case "planet_food":
-                    Stats.GetComponent<Stats>().Food += Workers * (Buildings + 1);
+                    Stats.GetComponent<Stats>().Food += Workers * (Stats.GetComponent<Stats>().Farm + 1);
                     break;
                 case "planet_wood":
                     Stats.GetComponent<Stats>().Wood += Workers;
