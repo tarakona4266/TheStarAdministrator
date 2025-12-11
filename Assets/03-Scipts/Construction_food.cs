@@ -8,6 +8,7 @@ public class Construction_food : MonoBehaviour
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
     [SerializeField] Construction_cost_stats cost;
+    [SerializeField] ConstructionAudioController audioController;
     [Header("Prefabs")]
     [SerializeField] GameObject farm;
     [SerializeField] float rotationOffset = 0f;
@@ -23,6 +24,9 @@ public class Construction_food : MonoBehaviour
     Vector3 buildRotation;
     Vector3 rayDir;
 
+    private void Start()
+    {
+    }
 
     void Update()
     {
@@ -131,7 +135,12 @@ public class Construction_food : MonoBehaviour
                     gameStats.Farm++;
                     gameStats.Wood -= cost.Fwood;
                     gameStats.Stone -= cost.Fcristal;
+                    audioController.PlaySound(true);
                 }
+            }
+            else
+            {
+                audioController.PlaySound(false);
             }
         }
     }

@@ -19,6 +19,7 @@ public class Construction : MonoBehaviour
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
     [SerializeField] Construction_cost_stats cost;
+    [SerializeField] ConstructionAudioController audioController;
     [Header("Prefabs")]
     [SerializeField] bool homePlanet = true;
     [SerializeField] GameObject house;
@@ -199,10 +200,14 @@ public class Construction : MonoBehaviour
                     build.SetActive(true);
                     build.GetComponent<BoxCollider2D>().enabled = true;
                 }
+                audioController.PlaySound(true);
+            }
+            else
+            {
+                audioController.PlaySound(false);
             }
         }
     }
-
     public void OnDisable()
     {
         if (constructionMode)
