@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,10 +9,16 @@ public class Construction_food : MonoBehaviour
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
     [SerializeField] Construction_cost_stats cost;
+    [SerializeField] GameObject costDisplay;
     [SerializeField] ConstructionAudioController audioController;
     [Header("Prefabs")]
     [SerializeField] GameObject farm;
     [SerializeField] float rotationOffset = 0f;
+    [Header("UI")]
+    [SerializeField] TextMeshProUGUI woodCost;
+    [SerializeField] TextMeshProUGUI cristalCost;
+    [SerializeField] TextMeshProUGUI builderCost;
+    [SerializeField] TextMeshProUGUI happinessBonus;
 
     public bool constructionMode;
     bool validPlanet;
@@ -23,10 +30,6 @@ public class Construction_food : MonoBehaviour
     Vector3 buildPosition;
     Vector3 buildRotation;
     Vector3 rayDir;
-
-    private void Start()
-    {
-    }
 
     void Update()
     {
@@ -97,17 +100,26 @@ public class Construction_food : MonoBehaviour
         {
             constructionMode = false;
             if (toBuild != null) { Destroy(toBuild); }
+            if (costDisplay.activeSelf)
+            {
+                costDisplay.SetActive(false);
+                woodCost.text = "-";
+                cristalCost.text = "-";
+                builderCost.text = "-";
+                happinessBonus.text = "-";
+            }
         }
         else
         {
             constructionMode = true;
-            doOnce = true;
-            SelectPrefab();
+            costDisplay.SetActive(true);
         }
     }
 
     public void SelectPrefab()
     {
+        doOnce = true;
+
         if (toBuild != null) { Destroy(toBuild); }
 
         toBuild = Instantiate(farm, transform);
@@ -117,6 +129,13 @@ public class Construction_food : MonoBehaviour
             toBuild.transform.position = buildPosition;
             toBuild.transform.rotation = Quaternion.Euler(buildRotation);
         }
+
+        int[] buildingCost = cost.GetCost("farm");
+
+        woodCost.text = string.Format($"{buildingCost[0]}");
+        cristalCost.text = string.Format($"{buildingCost[1]}");
+        builderCost.text = string.Format($"{buildingCost[2]}");
+        happinessBonus.text = string.Format($" + {buildingCost[3]}");
     }
 
     void Build()
