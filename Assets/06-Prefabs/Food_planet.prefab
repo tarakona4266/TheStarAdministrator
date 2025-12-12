@@ -571,7 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6228840933708568462}
-  - component: {fileID: 1606241870988047029}
+  - component: {fileID: 7966145056953120516}
   m_Layer: 7
   m_Name: Surface
   m_TagString: Untagged
@@ -603,25 +603,21 @@ Transform:
   - {fileID: 2270321809534617813}
   m_Father: {fileID: 3839904067448223229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1606241870988047029
+--- !u!114 &7966145056953120516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4458416214114229898}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f9a0897c98a2f43bc584195c6ca989, type: 3}
+  m_Script: {fileID: 11500000, guid: 77ea7e9c9bd1e4f449be9376405477eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraFocus: {fileID: 0}
   gameStats: {fileID: 0}
-  homePlanet: 0
-  house: {fileID: 0}
-  school: {fileID: 0}
   farm: {fileID: 8488451950656692376}
-  deco: {fileID: 0}
   constructionMode: 0
 --- !u!1 &4978795133772687793
 GameObject:
@@ -1048,13 +1044,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8488451950656692376}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.34219617, y: 0.8052919, z: -0.07245889, w: 0.47870302}
-  m_LocalPosition: {x: -3.251957, y: 0.76673615, z: -0.3339791}
+  m_LocalRotation: {x: -0.54335994, y: 0.6820406, z: 0.18271708, w: 0.45408714}
+  m_LocalPosition: {x: -2.832, y: 0.943, z: -0.547}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6228840933708568462}
-  m_LocalEulerAnglesHint: {x: -12.176, y: 122.916, z: -39.404}
+  m_LocalEulerAnglesHint: {x: -47.962, y: 141.061, z: -59.212}
 --- !u!212 &3035990954367069580
 SpriteRenderer:
   m_ObjectHideFlags: 0

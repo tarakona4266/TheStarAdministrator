@@ -11,6 +11,7 @@ public class Stats : MonoBehaviour
     [SerializeField] public int Stone = 0;
     [SerializeField] public int House = 5;
     [SerializeField] public int HouseLeft = 0;
+    [SerializeField] public int Farm = 0;
 
     [SerializeField] public int Villagers = 0;
     [SerializeField] public int Happiness = 10;

@@ -44,8 +44,4 @@ public class SnapToPlanetSurface : MonoBehaviour
         }
     }
 
-    private void OnTransformParentChanged()
-    {
-        
-    }
 }
