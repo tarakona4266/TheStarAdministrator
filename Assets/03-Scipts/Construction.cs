@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +20,9 @@ public class Construction : MonoBehaviour
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
     [SerializeField] Construction_cost_stats cost;
+    [SerializeField] GameObject costDisplay;
     [SerializeField] ConstructionAudioController audioController;
+
     [Header("Prefabs")]
     [SerializeField] bool homePlanet = true;
     [SerializeField] GameObject house;
@@ -29,13 +32,19 @@ public class Construction : MonoBehaviour
 
     public bool constructionMode;
     bool validPlanet;
-
     bool mouseRightClick;
 
     GameObject toBuild;
     Vector3 buildPosition;
     Vector3 buildRotation;
     Vector3 rayDir;
+
+    [Header("UI")]
+    [SerializeField] TextMeshProUGUI woodCost;
+    [SerializeField] TextMeshProUGUI cristalCost;
+    [SerializeField] TextMeshProUGUI builderCost;
+    [SerializeField] TextMeshProUGUI happinessBonus;
+
 
     void Update()
     {
@@ -106,47 +115,69 @@ public class Construction : MonoBehaviour
         {
             constructionMode = false;
             if (toBuild != null) { Destroy(toBuild); }
+            if (costDisplay.activeSelf)
+            {
+                costDisplay.SetActive(false);
+                woodCost.text = "-";
+                cristalCost.text = "-";
+                builderCost.text = "-";
+                happinessBonus.text = "-";
+            }
         }
         else
         {
-            constructionMode = true; 
+            constructionMode = true;
+            costDisplay.SetActive(true);
         }
     }
 
     public void SelectPrefab(int prefabIndex = 0)
     {
-        if (toBuild != null)
+        if (constructionMode)
         {
-            Destroy(toBuild);
-        }
-        Buildings prefabType = (Buildings)prefabIndex;
-        switch (prefabType)
-        {
-            case Buildings.house:
-                currentPrefab = Buildings.house;
-                currentPrefabName = "house";
-                toBuild = Instantiate(house, transform);
-                break;
-            case Buildings.library:
-                currentPrefab = Buildings.library;
-                currentPrefabName = "library";
-                toBuild = Instantiate(library, transform);
-                break;
-            case Buildings.school:
-                currentPrefab = Buildings.school;
-                currentPrefabName = "school";
-                toBuild = Instantiate(school, transform);
-                break;
-            case Buildings.museum:
-                currentPrefab = Buildings.museum;
-                currentPrefabName = "museum";
-                toBuild = Instantiate(museum, transform);
-                break;
-        }
-        if (toBuild != null)
-        {
-            toBuild.transform.position = buildPosition;
-            toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+            if (toBuild != null)
+            {
+                Destroy(toBuild);
+            }
+
+            Buildings prefabType = (Buildings)prefabIndex;
+            switch (prefabType)
+            {
+                case Buildings.house:
+                    currentPrefab = Buildings.house;
+                    currentPrefabName = "house";
+                    toBuild = Instantiate(house, transform);
+                    break;
+                case Buildings.library:
+                    currentPrefab = Buildings.library;
+                    currentPrefabName = "library";
+                    toBuild = Instantiate(library, transform);
+                    break;
+                case Buildings.school:
+                    currentPrefab = Buildings.school;
+                    currentPrefabName = "school";
+                    toBuild = Instantiate(school, transform);
+                    break;
+                case Buildings.museum:
+                    currentPrefab = Buildings.museum;
+                    currentPrefabName = "museum";
+                    toBuild = Instantiate(museum, transform);
+                    break;
+            }
+
+            if (toBuild != null)
+            {
+                toBuild.transform.position = buildPosition;
+                toBuild.transform.rotation = Quaternion.Euler(buildRotation);
+            }
+
+
+            int[] buildingCost = cost.GetCost(currentPrefabName);
+
+            woodCost.text = string.Format($"{buildingCost[0]}");
+            cristalCost.text = string.Format($"{buildingCost[1]}");
+            builderCost.text = string.Format($"{buildingCost[2]}");
+            happinessBonus.text = string.Format($" + {buildingCost[3]}");
         }
     }
 
@@ -208,6 +239,7 @@ public class Construction : MonoBehaviour
             }
         }
     }
+
     public void OnDisable()
     {
         if (constructionMode)
