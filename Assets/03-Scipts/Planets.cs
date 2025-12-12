@@ -69,7 +69,7 @@ public class TestPlanet : MonoBehaviour
             switch (this.gameObject.tag)
             {
                 case "planet_food":
-                    Stats.Food += Workers * (Buildings + 1);
+                    Stats.Food += Workers * (Stats.Farm + 1);
                     break;
                 case "planet_wood":
                     Stats.Wood += Workers;
