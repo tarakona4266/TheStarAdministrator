@@ -10,19 +10,22 @@ public class Construction : MonoBehaviour
     {
         house,
         school,
-        deco,
-        farm
+        library,
+        museum
     }
-    Buildings cuurentPrefab;
+    Buildings currentPrefab;
+    string currentPrefabName;
 
     [SerializeField] CameraFocus cameraFocus;
     [SerializeField] Stats gameStats;
+    [SerializeField] Construction_cost_stats cost;
+    [SerializeField] ConstructionAudioController audioController;
     [Header("Prefabs")]
     [SerializeField] bool homePlanet = true;
     [SerializeField] GameObject house;
     [SerializeField] GameObject school;
-    [SerializeField] GameObject farm;
-    [SerializeField] GameObject deco;
+    [SerializeField] GameObject library;
+    [SerializeField] GameObject museum;
 
     public bool constructionMode;
     bool validPlanet;
@@ -77,7 +80,7 @@ public class Construction : MonoBehaviour
                 // dislay building preview
                 if (validPlanet)
                 {
-                    if (!toBuild.gameObject.activeSelf) { toBuild.SetActive(true); }
+                    toBuild.SetActive(true);
 
                     toBuild.transform.position = buildPosition;
                     Quaternion rotation = Quaternion.FromToRotation(toBuild.transform.up, buildRotation) * toBuild.transform.rotation;
@@ -104,10 +107,13 @@ public class Construction : MonoBehaviour
             constructionMode = false;
             if (toBuild != null) { Destroy(toBuild); }
         }
-        else { constructionMode = true; }
+        else
+        {
+            constructionMode = true; 
+        }
     }
 
-    public void SelectPrefab(int prefabIndex)
+    public void SelectPrefab(int prefabIndex = 0)
     {
         if (toBuild != null)
         {
@@ -117,20 +123,24 @@ public class Construction : MonoBehaviour
         switch (prefabType)
         {
             case Buildings.house:
-                cuurentPrefab = Buildings.house;
+                currentPrefab = Buildings.house;
+                currentPrefabName = "house";
                 toBuild = Instantiate(house, transform);
                 break;
-            case Buildings.farm:
-                cuurentPrefab = Buildings.farm;
-                toBuild = Instantiate(farm, transform);
+            case Buildings.library:
+                currentPrefab = Buildings.library;
+                currentPrefabName = "library";
+                toBuild = Instantiate(library, transform);
                 break;
             case Buildings.school:
-                cuurentPrefab = Buildings.school;
+                currentPrefab = Buildings.school;
+                currentPrefabName = "school";
                 toBuild = Instantiate(school, transform);
                 break;
-            case Buildings.deco:
-                cuurentPrefab = Buildings.deco;
-                toBuild = Instantiate(deco, transform);
+            case Buildings.museum:
+                currentPrefab = Buildings.museum;
+                currentPrefabName = "museum";
+                toBuild = Instantiate(museum, transform);
                 break;
         }
         if (toBuild != null)
@@ -142,35 +152,62 @@ public class Construction : MonoBehaviour
 
     void Build()
     {
-        if (validPlanet) {
-            GameObject build = null;
-            switch (cuurentPrefab)
+        if (validPlanet)
+        {
+            // verify ressources
+            bool canBuild = cost.VerifyCost(gameStats.Wood, gameStats.Stone, 5, currentPrefabName); // temporary worker value
+
+            // build
+            if (canBuild)
             {
-                case Buildings.house:
-                    cuurentPrefab = Buildings.house;
-                    build = Instantiate(house, toBuild.transform.position, toBuild.transform.rotation, transform);
-                    break;
-                case Buildings.farm:
-                    cuurentPrefab = Buildings.farm;
-                    build = Instantiate(farm, toBuild.transform.position, toBuild.transform.rotation, transform);
-                    break;
-                case Buildings.school:
-                    cuurentPrefab = Buildings.school;
-                    build = Instantiate(school, toBuild.transform.position, toBuild.transform.rotation, transform);
-                    break;
-                case Buildings.deco:
-                    cuurentPrefab = Buildings.deco;
-                    build = Instantiate(deco, toBuild.transform.position, toBuild.transform.rotation, transform);
-                    break;
+                GameObject build = null;
+                switch (currentPrefab)
+                {
+                    case Buildings.house:
+                        currentPrefab = Buildings.house;
+                        build = Instantiate(house, toBuild.transform.position, toBuild.transform.rotation, transform);
+                        gameStats.House++;
+                        gameStats.Wood -= cost.Hwood;
+                        gameStats.Stone -= cost.Hcristal;
+                        break;
+
+                    case Buildings.library:
+                        currentPrefab = Buildings.library;
+                        build = Instantiate(library, toBuild.transform.position, toBuild.transform.rotation, transform);
+                        gameStats.Farm++;
+                        gameStats.Wood -= cost.Lwood;
+                        gameStats.Stone -= cost.Lcristal;
+                        gameStats.Happiness += cost.Lhappiness;
+                        break;
+
+                    case Buildings.school:
+                        currentPrefab = Buildings.school;
+                        build = Instantiate(school, toBuild.transform.position, toBuild.transform.rotation, transform);
+                        gameStats.Wood -= cost.Swood;
+                        gameStats.Stone -= cost.Scristal;
+                        break;
+
+                    case Buildings.museum:
+                        currentPrefab = Buildings.museum;
+                        build = Instantiate(museum, toBuild.transform.position, toBuild.transform.rotation, transform);
+                        gameStats.Wood -= cost.Mwood;
+                        gameStats.Stone -= cost.Mcristal;
+                        gameStats.Happiness += cost.Mhappiness;
+                        break;
+                }
+                if (build != null)
+                {
+                    build.SetActive(true);
+                    build.GetComponent<BoxCollider2D>().enabled = true;
+                }
+                audioController.PlaySound(true);
             }
-            if (build != null)
+            else
             {
-                build.SetActive(true);
-                build.GetComponent<BoxCollider2D>().enabled = true;
+                audioController.PlaySound(false);
             }
         }
     }
-
     public void OnDisable()
     {
         if (constructionMode)

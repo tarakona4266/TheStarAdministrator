@@ -31,7 +31,6 @@ public class CameraMovement : MonoBehaviour
         camTransform = GetComponent<Transform>();
 
         screenEdgeSize = Screen.width * screenEdgeSize / 100;
-        Debug.Log($"margin : {screenEdgeSize}");
 
         rightBorder = Screen.width - screenEdgeSize;
         leftBorder = screenEdgeSize;
