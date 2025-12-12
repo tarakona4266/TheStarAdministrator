@@ -53,6 +53,7 @@ public class PlanetInfos : MonoBehaviour
 
     public void DisplayInfos(string planetType = "Untagged")
     {
+        //print(planetType);
         switch (planetType)
         {
             case "planet_house": // home
