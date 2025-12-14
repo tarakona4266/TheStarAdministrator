@@ -52,17 +52,17 @@ public class Villager : MonoBehaviour
 
             if (Stats.HouseLeft > 0 && IsSleeping == false)
             {
-                transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+                transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
                 transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
             }
             else if (IsSleeping == true)
             {
-                transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+                transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
                 transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
             }
             else
             {
-                transform.position += new Vector3(-transform.position.x, -transform.position.y, -transform.position.z).normalized * speed;
+                transform.position += new Vector3(-transform.position.x, -transform.position.y, -transform.position.z).normalized * speed * Time.deltaTime;
                 transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(-transform.position.x, -transform.position.z) * Mathf.Rad2Deg, 0f);
             }
         }
@@ -89,19 +89,19 @@ public class Villager : MonoBehaviour
             switch (job) //Check the villager job and make them act accordingly by calling the correct function
             {
                 case "food":
-                    transform.position += new Vector3(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.y - transform.position.y, FoodPlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.position += new Vector3(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.y - transform.position.y, FoodPlanet.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(FoodPlanet.transform.position.x - transform.position.x, FoodPlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "wood":
-                    transform.position += new Vector3(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.y - transform.position.y, WoodPlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.position += new Vector3(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.y - transform.position.y, WoodPlanet.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(WoodPlanet.transform.position.x - transform.position.x, WoodPlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "stone":
-                    transform.position += new Vector3(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.y - transform.position.y, StonePlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.position += new Vector3(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.y - transform.position.y, StonePlanet.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(StonePlanet.transform.position.x - transform.position.x, StonePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "house":
-                    transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed;
+                    transform.position += new Vector3(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.y - transform.position.y, HousePlanet.transform.position.z - transform.position.z).normalized * speed * Time.deltaTime;
                     transform.rotation = Quaternion.Euler(90f, Mathf.Atan2(HousePlanet.transform.position.x - transform.position.x, HousePlanet.transform.position.z - transform.position.z) * Mathf.Rad2Deg, 0f);
                     break;
                 case "vagabond":
