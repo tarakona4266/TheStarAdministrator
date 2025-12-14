@@ -31,52 +31,31 @@ public class PlanetInfos : MonoBehaviour
         offset = new Vector3(0, planetRadius, 0);
     }
 
-    void Update()
-    {
-        if (displayHomeInfos)
-        {
-            homeInfos.transform.position = Camera.main.WorldToScreenPoint(homePosition.position) + offset;
-        }
-        if (displayFoodInfos) 
-        {
-            foodInfos.transform.position = Camera.main.WorldToScreenPoint(foodPosition.position) + offset;
-        }
-        if (displayCristalInfos)
-        {
-            cristalInfos.transform.position = Camera.main.WorldToScreenPoint(cristalPosition.position) + offset;
-        }
-        if (displaysWoodInfos)
-        {
-            woodInfos.transform.position = Camera.main.WorldToScreenPoint(woodPosition.position) + offset;
-        }
-    }
-
     public void DisplayInfos(string planetType = "Untagged")
     {
-        //print(planetType);
         switch (planetType)
         {
             case "planet_house": // home
-                displayHomeInfos = true;
+                homeInfos.transform.position = Camera.main.WorldToScreenPoint(homePosition.position) + offset;
                 homeInfos.gameObject.SetActive(true);
                 break;
             case "planet_food": // food
-                displayFoodInfos = true;
+                foodInfos.transform.position = Camera.main.WorldToScreenPoint(foodPosition.position) + offset;
                 foodInfos.gameObject.SetActive(true);
                 break;
             case "planet_wood": // wood
-                displayCristalInfos = true;
+                woodInfos.transform.position = Camera.main.WorldToScreenPoint(woodPosition.position) + offset;
                 woodInfos.gameObject.SetActive(true);
                 break;
             case "planet_stone": // cristal
-                displaysWoodInfos = true;
+                cristalInfos.transform.position = Camera.main.WorldToScreenPoint(cristalPosition.position) + offset;
                 cristalInfos.gameObject.SetActive(true);
                 break;
             default:
                 homeInfos.gameObject.SetActive(false);
                 woodInfos.gameObject.SetActive(false);
-                foodInfos.gameObject.SetActive(false);
                 cristalInfos.gameObject.SetActive(false);
+                foodInfos.gameObject.SetActive(false);
                 break;
         }
     }

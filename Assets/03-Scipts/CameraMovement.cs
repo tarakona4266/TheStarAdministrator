@@ -46,21 +46,21 @@ public class CameraMovement : MonoBehaviour
             mouseX = mousePosition.x;
             mouseY = mousePosition.y;
 
-            if (mouseX > rightBorder)
+            if (mouseX > rightBorder && camTransform.position.x < 15)
             {
                 moveDir.x = 1;
             }
-            else if (mouseX < leftBorder)
+            else if (mouseX < leftBorder && camTransform.position.x > -15)
             {
                 moveDir.x = -1;
             }
             else { moveDir.x = 0; }
 
-            if (mouseY > topBorder)
+            if (mouseY > topBorder && camTransform.position.z < 35)
             {
                 moveDir.z = 1;
             }
-            else if (mouseY < bottomBorder)
+            else if (mouseY < bottomBorder && camTransform.position.z > -35)
             {
                 moveDir.z = -1;
             }
@@ -68,6 +68,8 @@ public class CameraMovement : MonoBehaviour
 
             moveDir.Normalize();
             camTransform.Translate(moveDir * movementSpeed * Time.deltaTime, Space.World);
+
+            //print(camTransform.position);
         }
     }
 
