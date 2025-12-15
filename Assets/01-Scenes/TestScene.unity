@@ -1198,7 +1198,8 @@ MonoBehaviour:
   HouseLeft: 0
   Farm: 0
   Villagers: 0
-  Happiness: 50
+  Vagabonds: 0
+  Happiness: 10
 --- !u!4 &409867982
 Transform:
   m_ObjectHideFlags: 0

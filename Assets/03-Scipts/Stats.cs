@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
-    [SerializeField] public int Food = 0;
-    [SerializeField] public int Wood = 0;
-    [SerializeField] public int Stone = 0;
-    [SerializeField] public int House = 5;
-    [SerializeField] public int HouseLeft = 0;
-    [SerializeField] public int Farm = 0;
+    [SerializeField] public int Food;
+    [SerializeField] public int Wood;
+    [SerializeField] public int Stone;
+    [SerializeField] public int House;
+    [SerializeField] public int HouseLeft;
+    [SerializeField] public int Farm;
 
-    [SerializeField] public int Villagers = 0;
+    [SerializeField] public int Villagers;
+    [SerializeField] public int Vagabonds;
+
     [SerializeField] public int Happiness = 10;
 
     private GameObject[] getCountFood;
@@ -38,8 +40,9 @@ public class Stats : MonoBehaviour
         getCountUnemployed = GameObject.FindGameObjectsWithTag("unemployed");
 
         Villagers = getCountFood.Length + getCountWood.Length + getCountStone.Length + getCountHouse.Length + getCountVagabond.Length + getCountUnemployed.Length;
+        Vagabonds = getCountVagabond.Length;
 
-        if (Happiness <= 0)
+        if (Happiness <= 0 || Villagers <= 0)
         {
             SceneManager.LoadScene("Defeat");
         }

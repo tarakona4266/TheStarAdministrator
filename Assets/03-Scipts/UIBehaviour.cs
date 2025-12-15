@@ -58,7 +58,7 @@ public class UIBehaviour : MonoBehaviour
         {
             GameObject g = GameObject.Instantiate(Villager);
             g.transform.position = new Vector3(0f, 0f, -15f);
-            g.active = true;
+            g.SetActive(true);
         }
         
     }
